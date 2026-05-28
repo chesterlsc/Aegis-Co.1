@@ -33,6 +33,7 @@ html {
 
 body {
   margin: 0;
+  overflow-x: hidden;
   background:
     linear-gradient(180deg, #ffffff 0, var(--bg) 420px, #f9fbfe 100%),
     var(--bg);
@@ -310,6 +311,7 @@ svg {
 .hero-visual {
   position: relative;
   min-height: 448px;
+  max-width: 100%;
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: var(--radius);
@@ -417,6 +419,7 @@ svg {
   display: grid;
   gap: 14px;
   width: 178px;
+  min-width: 0;
 }
 
 .input-column {
@@ -428,6 +431,7 @@ svg {
 }
 
 .map-node {
+  min-width: 0;
   min-height: 58px;
   display: grid;
   grid-template-columns: 28px 1fr;
@@ -443,11 +447,16 @@ svg {
 
 .map-node strong {
   display: block;
+  overflow-wrap: anywhere;
   font-family:
     "SFMono-Regular", Consolas, "Liberation Mono", Menlo, ui-monospace, monospace;
   font-size: 0.72rem;
   font-weight: 850;
   letter-spacing: 0;
+}
+
+.map-node > span {
+  min-width: 0;
 }
 
 .map-node small {
@@ -591,6 +600,18 @@ svg {
 .cta-section {
   padding: 34px 0;
   border-top: 1px solid var(--line);
+}
+
+.movement-section {
+  margin-top: 10px;
+  padding: 42px 0;
+  border-top: 1px solid #dbe6f1;
+  border-bottom: 1px solid #dbe6f1;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.54), rgba(244, 248, 253, 0.86)),
+    #f4f8fd;
+  box-shadow: 0 0 0 100vmax #f4f8fd;
+  clip-path: inset(0 -100vmax);
 }
 
 .section-heading {
@@ -780,6 +801,7 @@ svg {
   position: relative;
   display: grid;
   grid-template-columns: minmax(230px, 0.34fr) minmax(680px, 1fr);
+  max-width: 100%;
   min-height: 360px;
   overflow: hidden;
   border: 1px solid rgba(193, 212, 232, 0.28);
@@ -847,6 +869,46 @@ svg {
   font-size: 0.7rem;
   font-weight: 850;
   text-transform: uppercase;
+}
+
+.system-flow-link {
+  width: fit-content;
+  min-height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 14px;
+  border: 1px solid rgba(118, 170, 255, 0.32);
+  border-radius: 6px;
+  padding: 0 16px;
+  background: rgba(11, 99, 255, 0.08);
+  color: #dce9ff;
+  font-family:
+    "SFMono-Regular", Consolas, "Liberation Mono", Menlo, ui-monospace, monospace;
+  font-size: 0.68rem;
+  font-weight: 850;
+  text-transform: uppercase;
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease,
+    color 160ms ease;
+}
+
+.system-flow-link svg {
+  width: 15px;
+  height: 15px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.system-flow-link:hover {
+  border-color: rgba(118, 170, 255, 0.56);
+  background: rgba(11, 99, 255, 0.14);
+  color: #ffffff;
 }
 
 .system-diagram {
@@ -978,12 +1040,14 @@ svg {
   z-index: 2;
   display: grid;
   grid-template-columns: repeat(5, minmax(100px, 1fr));
+  min-width: 0;
   align-items: center;
   column-gap: var(--process-gap);
   padding: 0 var(--process-x-pad);
 }
 
 .process-node {
+  min-width: 0;
   min-height: 122px;
   display: grid;
   place-items: center;
@@ -1025,6 +1089,7 @@ svg {
   font-size: 0.82rem;
   font-weight: 750;
   line-height: 1.36;
+  overflow-wrap: anywhere;
 }
 
 .process-node small {
@@ -1454,36 +1519,46 @@ svg {
   }
 
   .hero-visual {
-    min-height: 620px;
+    min-height: 0;
+    display: grid;
+    gap: 12px;
+    padding: 70px 14px 16px;
   }
 
   .visual-tag {
-    top: 18px;
+    top: 16px;
   }
 
   .map-column {
-    width: calc(50% - 32px);
-    top: 62px;
-    gap: 10px;
+    position: static;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
   }
 
   .input-column {
-    left: 16px;
+    left: auto;
   }
 
   .output-column {
-    right: 16px;
+    right: auto;
   }
 
   .map-node {
-    min-height: 56px;
-    grid-template-columns: 24px 1fr;
+    min-height: 70px;
+    grid-template-columns: 22px 1fr;
     gap: 8px;
-    padding: 10px;
+    padding: 10px 9px;
   }
 
   .map-node strong {
-    font-size: 0.66rem;
+    font-size: 0.62rem;
+    line-height: 1.2;
+  }
+
+  .map-node small {
+    font-size: 0.6rem;
   }
 
   .node-icon {
@@ -1492,7 +1567,48 @@ svg {
   }
 
   .orchestrator-card {
-    top: 332px;
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    isolation: isolate;
+    width: 100%;
+    height: 82px;
+    transform: none;
+    justify-self: stretch;
+  }
+
+  .orchestrator-card::before,
+  .orchestrator-card::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    z-index: -1;
+    width: 1px;
+    height: 12px;
+    background: rgba(112, 129, 150, 0.42);
+    transform: translateX(-50%);
+  }
+
+  .orchestrator-card::before {
+    top: -12px;
+  }
+
+  .orchestrator-card::after {
+    bottom: -12px;
+  }
+
+  .orchestrator-card svg {
+    width: 30px;
+    height: 30px;
+  }
+
+  .orchestrator-card strong {
+    font-size: 0.66rem;
+  }
+
+  .orchestrator-card span {
+    font-size: 0.65rem;
   }
 
   .route-layer {
@@ -1500,10 +1616,7 @@ svg {
   }
 
   .map-legend {
-    right: 16px;
-    bottom: 18px;
-    left: 16px;
-    gap: 14px;
+    display: none;
   }
 
   .service-grid,
@@ -1529,6 +1642,7 @@ svg {
     --process-gap: 12px;
     grid-template-columns: 1fr;
     min-height: auto;
+    overflow: hidden;
   }
 
   .system-visual-copy {
@@ -1568,8 +1682,8 @@ svg {
 
   .process-flow {
     grid-template-columns: 1fr;
-    gap: 12px;
-    padding: 18px 16px 0;
+    gap: 6px;
+    padding: 16px 16px 0;
   }
 
   .process-route-layer {
@@ -1579,7 +1693,7 @@ svg {
   .flow-arrow {
     display: block;
     width: 1px;
-    height: 24px;
+    height: 16px;
     justify-self: center;
     background: rgba(207, 225, 244, 0.72);
   }
@@ -1605,7 +1719,7 @@ svg {
 
   .exception-row {
     grid-template-columns: 1fr;
-    padding: 14px 16px 18px;
+    padding: 10px 16px 16px;
   }
 
   .exception-line,
@@ -1617,6 +1731,38 @@ svg {
     grid-column: auto;
     width: 100%;
     grid-template-columns: 24px 1fr;
+    min-height: 76px;
+    padding: 10px 12px;
+  }
+
+  .process-node {
+    min-height: 76px;
+    grid-template-columns: 30px minmax(0, 1fr);
+    grid-template-areas:
+      "icon label"
+      "icon title";
+    place-items: center start;
+    align-content: center;
+    gap: 2px 12px;
+    padding: 11px 12px;
+    text-align: left;
+  }
+
+  .process-node .node-mini-icon {
+    grid-area: icon;
+    width: 26px;
+    height: 26px;
+  }
+
+  .process-node strong {
+    grid-area: label;
+    font-size: 0.62rem;
+  }
+
+  .process-node > span:not(.node-mini-icon) {
+    grid-area: title;
+    font-size: 0.88rem;
+    line-height: 1.24;
   }
 
   .service-card {
@@ -1639,27 +1785,43 @@ svg {
 
 @media (max-width: 430px) {
   .hero-visual {
-    min-height: 760px;
+    padding: 68px 12px 14px;
   }
 
   .map-column {
-    width: calc(100% - 32px);
+    width: 100%;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .output-column {
-    top: 456px;
-    left: 16px;
+    top: auto;
+    left: auto;
     right: auto;
   }
 
   .orchestrator-card {
-    top: 332px;
-    width: calc(100% - 32px);
-    height: 92px;
+    top: auto;
+    width: 100%;
+    height: 78px;
   }
 
   .map-legend {
     display: none;
+  }
+
+  .process-node {
+    min-height: 72px;
+    padding: 10px 11px;
+  }
+
+  .process-node > span:not(.node-mini-icon) {
+    font-size: 0.84rem;
+  }
+}
+
+@media (max-width: 300px) {
+  .map-column {
+    grid-template-columns: 1fr;
   }
 }
 
