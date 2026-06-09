@@ -30,109 +30,139 @@
     </header>
 
     <main id="top">
-      <section class="section-shell flow-hero">
-        <div>
-          <p class="eyebrow bracketed">System Flows</p>
-          <h1>A look at how the systems work.</h1>
-          <p>
-            Examples of workflows Aegis builds across intake, operations, reporting, and automation.
-          </p>
-        </div>
-        <div class="flow-controls">
-          <div class="flow-system-state" aria-label="Flowchart system state">
-            <span>System Design</span>
-            <strong><i></i> Flowcharts Active</strong>
-            <small>Intake, operations, accounting, automation, and reporting flows.</small>
-          </div>
+      <section class="section-shell flow-dashboard" aria-label="Aegis system flow library">
+        <aside class="flow-controls">
           <nav class="flow-index" aria-label="System flow navigation">
-            <a href="#lead-qualification">Lead Qualification</a>
-            <a href="#order-to-accounting">Order to Accounting</a>
-            <a href="#call-handling">24/7 Call Handling</a>
-            <a href="#back-office-automation">Back Office Automation</a>
-            <a href="#daily-reporting-loop">Daily Reporting Loop</a>
+            <p class="flow-index-title">Workflows</p>
+            <div class="flow-index-list">
+              <button class="flow-nav-item" type="button" data-flow="lead-qualification" aria-current="true">
+                <span class="flow-nav-point" aria-hidden="true"></span>
+                <span class="flow-nav-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM4.5 20a7.5 7.5 0 0 1 15 0"></path>
+                  </svg>
+                </span>
+                <span>Lead Qualification</span>
+              </button>
+              <button class="flow-nav-item" type="button" data-flow="order-to-accounting">
+                <span class="flow-nav-point" aria-hidden="true"></span>
+                <span class="flow-nav-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M7 3h7l4 4v14H7V3Z"></path>
+                    <path d="M14 3v5h5M10 13h5M10 17h3M4 7v14h3"></path>
+                  </svg>
+                </span>
+                <span>Order to Accounting</span>
+              </button>
+              <button class="flow-nav-item" type="button" data-flow="call-handling">
+                <span class="flow-nav-point" aria-hidden="true"></span>
+                <span class="flow-nav-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M6.5 4.5 9 7.2 7.2 9.5c.9 1.8 2.5 3.4 4.3 4.3L13.8 12l2.7 2.5c.6.6.7 1.5.2 2.2l-1.1 1.7c-.5.8-1.5 1.1-2.4.8C8.5 17.7 4.8 14 3.3 9.3c-.3-.9 0-1.9.8-2.4l1.7-1.1c.7-.5 1.6-.4 2.2.2Z"></path>
+                  </svg>
+                </span>
+                <span>24/7 Call Handling</span>
+              </button>
+              <button class="flow-nav-item" type="button" data-flow="back-office-automation">
+                <span class="flow-nav-point" aria-hidden="true"></span>
+                <span class="flow-nav-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M12 8.2a3.8 3.8 0 1 0 0 7.6 3.8 3.8 0 0 0 0-7.6ZM12 2v3M12 19v3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M2 12h3M19 12h3M4.9 19.1l2.1-2.1M17 7l2.1-2.1"></path>
+                  </svg>
+                </span>
+                <span>Back Office Automation</span>
+              </button>
+              <button class="flow-nav-item" type="button" data-flow="daily-reporting">
+                <span class="flow-nav-point" aria-hidden="true"></span>
+                <span class="flow-nav-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M5 19V9M12 19V5M19 19v-8M3 19h18"></path>
+                  </svg>
+                </span>
+                <span>Daily Reporting Loop</span>
+              </button>
+            </div>
           </nav>
+
+          <div class="flow-rail-note">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 3 20 7v6c0 4.4-3.2 7.5-8 9-4.8-1.5-8-4.6-8-9V7l8-4Z"></path>
+              <path d="M12 7v11M8.5 8.8l3.5-1.6 3.5 1.6v3.8c0 2.2-1.4 3.9-3.5 5-2.1-1.1-3.5-2.8-3.5-5V8.8Z"></path>
+            </svg>
+            <p>These are the systems that protect revenue and drive growth.</p>
+          </div>
+        </aside>
+
+        <div class="flow-dashboard-main">
+          <section class="flow-hero">
+            <div class="flow-hero-copy">
+              <div class="flow-utility-row">
+                <p class="eyebrow bracketed">System Flows</p>
+                <div class="flow-system-state" aria-label="Flowchart system state">
+                  <span>System Design</span>
+                  <strong><i></i> All Systems Operational</strong>
+                </div>
+              </div>
+              <h1>This Is What Your Business Should Look Like.</h1>
+            </div>
+
+            <aside class="flow-info-panel" aria-label="System flow overview">
+              <p>What You're Looking At</p>
+              <h2>Five system flows built to show how Aegis structures intake, operations, and reporting.</h2>
+              <div class="flow-info-tags" aria-label="Flow categories">
+                <span>
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM4.5 20a7.5 7.5 0 0 1 15 0"></path>
+                  </svg>
+                  Intake
+                </span>
+                <span>
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 8.2a3.8 3.8 0 1 0 0 7.6 3.8 3.8 0 0 0 0-7.6ZM12 2v3M12 19v3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M2 12h3M19 12h3M4.9 19.1l2.1-2.1M17 7l2.1-2.1"></path>
+                  </svg>
+                  Operations
+                </span>
+                <span>
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M5 19V9M12 19V5M19 19v-8M3 19h18"></path>
+                  </svg>
+                  Reporting
+                </span>
+              </div>
+            </aside>
+          </section>
+
+          <article class="flow-card" id="workflow-view" aria-live="polite">
+            <div class="flow-card-header">
+              <div>
+                <span id="flow-eyebrow">flow: lead qualification</span>
+                <h2 id="flow-title">Lead Qualification Workflow</h2>
+              </div>
+              <p id="flow-sequence">Capture &rarr; Qualify &rarr; Route &rarr; Notify</p>
+            </div>
+            <figure class="flow-frame">
+              <img
+                id="flow-image"
+                src="assets/flows/lead-qualification.png"
+                alt="Aegis lead qualification flowchart showing capture, AI qualification, routing, CRM updates, and lead notifications."
+              >
+            </figure>
+          </article>
         </div>
-      </section>
-
-      <section class="section-shell flow-library" aria-label="Aegis system flowcharts">
-        <article class="flow-card" id="lead-qualification">
-          <div class="flow-card-header">
-            <div>
-              <span>flow: lead qualification</span>
-              <h2>Lead Qualification</h2>
-            </div>
-            <p>Capture, qualify, route, notify.</p>
-          </div>
-          <figure class="flow-frame">
-            <img src="assets/flows/lead-qualification.png" alt="Aegis lead qualification flowchart showing capture, AI qualification, routing, CRM updates, and lead notifications.">
-          </figure>
-        </article>
-
-        <article class="flow-card" id="order-to-accounting">
-          <div class="flow-card-header">
-            <div>
-              <span>flow: order to accounting</span>
-              <h2>Order to Accounting</h2>
-            </div>
-            <p>Connect orders, accounting, records, and reporting.</p>
-          </div>
-          <figure class="flow-frame">
-            <img src="assets/flows/order-to-accounting.png" alt="Aegis order to accounting flowchart showing order intake, validation, accounting updates, and reporting outputs.">
-          </figure>
-        </article>
-
-        <article class="flow-card" id="call-handling">
-          <div class="flow-card-header">
-            <div>
-              <span>flow: 24/7 call handling</span>
-              <h2>24/7 Call Handling</h2>
-            </div>
-            <p>Answer, route, update, follow up.</p>
-          </div>
-          <figure class="flow-frame">
-            <img src="assets/flows/call-handling.png" alt="Aegis 24/7 call handling flowchart showing customer calls, AI answers, routing, CRM updates, and customer follow-up.">
-          </figure>
-        </article>
-
-        <article class="flow-card" id="back-office-automation">
-          <div class="flow-card-header">
-            <div>
-              <span>flow: back office automation</span>
-              <h2>Back Office Automation</h2>
-            </div>
-            <p>Standardize recurring admin work and handoffs.</p>
-          </div>
-          <figure class="flow-frame">
-            <img src="assets/flows/back-office-automation.png" alt="Aegis back office automation flowchart showing intake, task automation, approvals, updates, and operations visibility.">
-          </figure>
-        </article>
-
-        <article class="flow-card" id="daily-reporting-loop">
-          <div class="flow-card-header">
-            <div>
-              <span>flow: daily reporting</span>
-              <h2>Daily Reporting Loop</h2>
-            </div>
-            <p>Move operating data into a daily decision rhythm.</p>
-          </div>
-          <figure class="flow-frame">
-            <img src="assets/flows/daily-reporting-loop.png" alt="Aegis daily reporting loop flowchart showing data capture, reporting automation, review, and decision visibility.">
-          </figure>
-        </article>
       </section>
 
       <section class="section-shell flow-cta" id="contact">
         <div>
-          <p class="eyebrow">System Examples</p>
-          <h2>These are examples of systems Aegis builds.</h2>
+          <p class="eyebrow">Operating Standard</p>
+          <h2>This is how your business should operate.</h2>
         </div>
         <p>
-          The same template can be adapted across intake, routing, reporting, approvals, and internal operations.
+          Clear systems capture the work, protect the handoff, and give your team more time for higher-value decisions.
         </p>
-        <a class="button button-secondary" href="index.html">
-          <span>Back to Aegis</span>
+        <a class="button button-primary" href="index.html#contact">
+          <span>Get Your System Mapped</span>
           <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M19 12H5M11 6l-6 6 6 6"></path>
+            <path d="M5 12h14M13 6l6 6-6 6"></path>
           </svg>
         </a>
       </section>
@@ -187,5 +217,85 @@
         </div>
       </div>
     </footer>
+    <script>
+      const flowData = {
+        "lead-qualification": {
+          eyebrow: "flow: lead qualification",
+          title: "Lead Qualification Workflow",
+          sequence: "Capture \u2192 Qualify \u2192 Route \u2192 Notify",
+          image: "assets/flows/lead-qualification.png",
+          alt: "Aegis lead qualification flowchart showing capture, AI qualification, routing, CRM updates, and lead notifications.",
+        },
+        "order-to-accounting": {
+          eyebrow: "flow: order to accounting",
+          title: "Order to Accounting Workflow",
+          sequence: "Order \u2192 Validate \u2192 Record \u2192 Report",
+          image: "assets/flows/order-to-accounting.png",
+          alt: "Aegis order to accounting flowchart showing order intake, validation, accounting updates, and reporting outputs.",
+        },
+        "call-handling": {
+          eyebrow: "flow: 24/7 call handling",
+          title: "24/7 Call Handling Workflow",
+          sequence: "Answer \u2192 Route \u2192 Update \u2192 Follow Up",
+          image: "assets/flows/call-handling.png",
+          alt: "Aegis 24/7 call handling flowchart showing customer calls, AI answers, routing, CRM updates, and customer follow-up.",
+        },
+        "back-office-automation": {
+          eyebrow: "flow: back office automation",
+          title: "Back Office Automation Workflow",
+          sequence: "Capture \u2192 Standardize \u2192 Approve \u2192 Complete",
+          image: "assets/flows/back-office-automation.png",
+          alt: "Aegis back office automation flowchart showing intake, task automation, approvals, updates, and operations visibility.",
+        },
+        "daily-reporting": {
+          eyebrow: "flow: daily reporting",
+          title: "Daily Reporting Loop Workflow",
+          sequence: "Collect \u2192 Report \u2192 Review \u2192 Decide",
+          image: "assets/flows/daily-reporting-loop.png",
+          alt: "Aegis daily reporting loop flowchart showing data capture, reporting automation, review, and decision visibility.",
+        },
+      };
+
+      const flowButtons = Array.from(document.querySelectorAll(".flow-nav-item"));
+      const flowEyebrow = document.querySelector("#flow-eyebrow");
+      const flowTitle = document.querySelector("#flow-title");
+      const flowSequence = document.querySelector("#flow-sequence");
+      const flowImage = document.querySelector("#flow-image");
+
+      const activateFlow = (id, updateHash = true) => {
+        const activeFlow = flowData[id] || flowData["lead-qualification"];
+        const activeId = flowData[id] ? id : "lead-qualification";
+
+        flowButtons.forEach((button) => {
+          if (button.dataset.flow === activeId) {
+            button.setAttribute("aria-current", "true");
+            if (window.matchMedia("(max-width: 760px)").matches) {
+              button.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+            }
+          } else {
+            button.removeAttribute("aria-current");
+          }
+        });
+
+        flowEyebrow.textContent = activeFlow.eyebrow;
+        flowTitle.textContent = activeFlow.title;
+        flowSequence.textContent = activeFlow.sequence;
+        flowImage.src = activeFlow.image;
+        flowImage.alt = activeFlow.alt;
+
+        if (updateHash) {
+          history.replaceState(null, "", `#${activeId}`);
+        }
+      };
+
+      if (flowButtons.length && flowEyebrow && flowTitle && flowSequence && flowImage) {
+        flowButtons.forEach((button) => {
+          button.addEventListener("click", () => activateFlow(button.dataset.flow));
+        });
+
+        const initialFlow = window.location.hash.slice(1);
+        activateFlow(initialFlow || "lead-qualification", false);
+      }
+    </script>
   </body>
 </html>
