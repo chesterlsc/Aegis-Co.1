@@ -1359,6 +1359,27 @@ svg {
   color: #ffffff;
 }
 
+.assessment-menu-toggle {
+  display: none;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  gap: 4px;
+  border: 1px solid rgba(63, 128, 255, 0.42);
+  border-radius: 7px;
+  background: rgba(11, 99, 255, 0.06);
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.assessment-menu-toggle span:not(.sr-only) {
+  width: 18px;
+  height: 2px;
+  display: block;
+  border-radius: 999px;
+  background: currentColor;
+}
+
 .assessment-nav-cta {
   min-height: 48px;
   display: inline-flex;
@@ -3115,87 +3136,173 @@ svg {
   }
 
   .assessment-header {
-    min-height: 116px;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    padding: 16px 0;
+    min-height: 66px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+  }
+
+  .assessment-menu-toggle {
+    display: grid;
   }
 
   .assessment-nav {
-    width: 100%;
-    gap: 12px;
-    overflow-x: auto;
-    padding-bottom: 4px;
-    font-size: 0.7rem;
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    display: none;
+    width: min(260px, 100%);
+    border: 1px solid rgba(126, 157, 197, 0.22);
+    border-radius: 10px;
+    padding: 12px;
+    background: rgba(5, 13, 24, 0.96);
+    box-shadow: 0 18px 44px rgba(0, 0, 0, 0.26);
+    font-size: 0.72rem;
   }
 
-  .assessment-nav a {
-    flex: 0 0 auto;
+  .assessment-header.is-menu-open .assessment-nav {
+    display: grid;
+    gap: 10px;
   }
 
   .assessment-nav-cta {
     min-height: 40px;
+    width: 100%;
     padding: 0 14px;
   }
 
   .assessment-main {
-    padding: 28px 0 26px;
+    padding: 14px 0 18px;
+  }
+
+  .assessment-shell {
+    gap: 18px;
+  }
+
+  .assessment-aside {
+    gap: 14px;
+    padding-top: 0;
+  }
+
+  .assessment-eyebrow {
+    margin-bottom: 14px;
+    font-size: 0.72rem;
   }
 
   .assessment-intro h1 {
-    font-size: 3.15rem;
+    font-size: 2.54rem;
+    line-height: 1.02;
+  }
+
+  .assessment-rule {
+    width: 58px;
+    margin: 18px 0 14px;
   }
 
   .assessment-intro p:not(.assessment-eyebrow) {
-    font-size: 1rem;
+    font-size: 0.96rem;
+    line-height: 1.42;
   }
 
   .assessment-benefits {
-    grid-template-columns: 1fr;
+    overflow: hidden;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0;
+    margin-top: 2px;
+    border: 1px solid rgba(126, 157, 197, 0.18);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.024);
   }
 
   .assessment-benefit {
-    grid-template-columns: 58px minmax(0, 1fr);
-    gap: 16px;
+    grid-template-columns: 1fr;
+    gap: 9px;
+    padding: 12px 9px;
+    text-align: center;
+  }
+
+  .assessment-benefit + .assessment-benefit {
+    border-left: 1px solid rgba(126, 157, 197, 0.14);
   }
 
   .assessment-icon {
-    width: 52px;
-    height: 52px;
+    width: 34px;
+    height: 34px;
+    justify-self: center;
+  }
+
+  .assessment-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .assessment-benefit h2 {
+    margin-bottom: 5px;
+    font-size: 0.62rem;
+  }
+
+  .assessment-benefit p {
+    font-size: 0.68rem;
+    line-height: 1.35;
+  }
+
+  .assessment-aside > .assessment-trust {
+    display: none;
   }
 
   .assessment-trust,
   .assessment-next {
-    padding: 20px;
+    padding: 16px;
   }
 
   .assessment-next ol {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+    margin-top: 12px;
+  }
+
+  .assessment-next li {
     grid-template-columns: 1fr;
-    gap: 18px;
+    gap: 8px;
+    justify-items: center;
+    text-align: center;
   }
 
   .assessment-next li + li {
-    border-top: 1px solid rgba(126, 157, 197, 0.16);
-    border-left: 0;
+    border-top: 0;
+    border-left: 1px solid rgba(126, 157, 197, 0.16);
     margin-left: 0;
-    padding-top: 18px;
-    padding-left: 0;
+    padding-top: 0;
+    padding-left: 8px;
+  }
+
+  .assessment-next li > span {
+    width: 28px;
+    height: 28px;
+  }
+
+  .assessment-next strong {
+    font-size: 0.68rem;
+  }
+
+  .assessment-next small {
+    font-size: 0.62rem;
+    line-height: 1.3;
   }
 
   .assessment-form {
-    gap: 24px;
-    padding: 30px 22px 22px;
+    gap: 14px;
+    padding: 18px 16px 16px;
   }
 
   .assessment-wizard {
-    gap: 28px;
+    gap: 14px;
   }
 
   .assessment-wizard-top {
     grid-template-columns: 1fr;
-    gap: 16px;
-    padding-bottom: 22px;
+    gap: 10px;
+    padding-bottom: 14px;
   }
 
   .assessment-step-list {
@@ -3203,7 +3310,7 @@ svg {
   }
 
   .assessment-question-label {
-    font-size: 1.28rem;
+    font-size: 1.14rem;
   }
 
   .assessment-choice-grid.two-by-two {
@@ -3212,16 +3319,18 @@ svg {
 
   .assessment-choice-card {
     min-height: 0;
-    padding: 22px;
+    padding: 16px;
   }
 
   .assessment-choice-card.compact {
-    min-height: 64px;
-    padding: 18px;
+    min-height: 54px;
+    padding: 14px;
   }
 
   .assessment-wizard-actions {
-    gap: 14px;
+    gap: 10px;
+    border-top: 0;
+    padding-top: 4px;
   }
 
   .assessment-field-grid.three,
@@ -3247,8 +3356,8 @@ svg {
 
   .assessment-submit-bar {
     grid-template-columns: 1fr;
-    gap: 18px;
-    padding: 18px;
+    gap: 12px;
+    padding: 14px;
   }
 
   .assessment-wizard-forward,
@@ -3688,15 +3797,15 @@ svg {
 
 @media (max-width: 430px) {
   .assessment-intro h1 {
-    font-size: 2.72rem;
+    font-size: 2.32rem;
   }
 
   .assessment-brand {
-    font-size: 1.32rem;
+    font-size: 1.18rem;
   }
 
   .assessment-trust {
-    grid-template-columns: 1fr;
+    grid-template-columns: 28px minmax(0, 1fr);
   }
 
   .assessment-radio-list label {
@@ -3705,11 +3814,11 @@ svg {
   }
 
   .assessment-form {
-    padding: 26px 16px 18px;
+    padding: 16px 14px 14px;
   }
 
   .assessment-question-label {
-    font-size: 1.16rem;
+    font-size: 1.06rem;
   }
 
   .assessment-wizard-actions {
@@ -3724,6 +3833,22 @@ svg {
 
   .assessment-submit-copy {
     grid-template-columns: 1fr;
+  }
+
+  .assessment-benefit {
+    padding: 10px 7px;
+  }
+
+  .assessment-benefit p {
+    font-size: 0.62rem;
+  }
+
+  .assessment-next {
+    padding: 14px 12px;
+  }
+
+  .assessment-next li + li {
+    padding-left: 6px;
   }
 
   .flow-index {
