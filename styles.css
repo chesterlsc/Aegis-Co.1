@@ -1363,7 +1363,9 @@ svg {
   display: none;
   width: 42px;
   height: 42px;
-  place-items: center;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
   gap: 4px;
   border: 1px solid rgba(63, 128, 255, 0.42);
   border-radius: 7px;
@@ -3136,6 +3138,7 @@ svg {
   }
 
   .assessment-header {
+    z-index: 20;
     min-height: 66px;
     align-items: center;
     justify-content: space-between;
@@ -3143,26 +3146,44 @@ svg {
   }
 
   .assessment-menu-toggle {
-    display: grid;
+    display: inline-flex;
+    flex: 0 0 auto;
   }
 
   .assessment-nav {
     position: absolute;
     top: calc(100% + 10px);
     right: 0;
+    left: 0;
+    z-index: 30;
     display: none;
-    width: min(260px, 100%);
+    width: 100%;
     border: 1px solid rgba(126, 157, 197, 0.22);
     border-radius: 10px;
-    padding: 12px;
-    background: rgba(5, 13, 24, 0.96);
+    padding: 16px;
+    background: #050d18;
     box-shadow: 0 18px 44px rgba(0, 0, 0, 0.26);
-    font-size: 0.72rem;
+    font-size: 0.78rem;
   }
 
   .assessment-header.is-menu-open .assessment-nav {
     display: grid;
-    gap: 10px;
+    gap: 12px;
+  }
+
+  .assessment-header.is-menu-open {
+    margin-bottom: 318px;
+  }
+
+  .assessment-nav a {
+    min-height: 42px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(126, 157, 197, 0.14);
+  }
+
+  .assessment-nav a:last-child {
+    border-bottom: 0;
   }
 
   .assessment-nav-cta {
