@@ -3172,7 +3172,7 @@ svg {
   }
 
   .assessment-header.is-menu-open {
-    margin-bottom: 318px;
+    margin-bottom: 334px;
   }
 
   .assessment-nav a {
@@ -3189,6 +3189,7 @@ svg {
   .assessment-nav-cta {
     min-height: 40px;
     width: 100%;
+    margin-bottom: 16px;
     padding: 0 14px;
   }
 
