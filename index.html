@@ -13,7 +13,7 @@
   </head>
   <body>
     <header class="site-header">
-      <a class="brand" href="#top" aria-label="Aegis & Co. home">
+      <a class="brand" href="/" aria-label="Aegis & Co. home">
         <span class="brand-mark" aria-hidden="true">
           <svg viewBox="0 0 32 32" role="img">
             <path d="M16 3 27 8v8.2c0 6.2-4.4 10.5-11 13-6.6-2.5-11-6.8-11-13V8l11-5Z"></path>
@@ -440,7 +440,7 @@
     <footer class="site-footer">
       <div class="footer-grid">
         <div class="footer-brand">
-          <a class="brand" href="#top" aria-label="Aegis & Co. home">
+          <a class="brand" href="/" aria-label="Aegis & Co. home">
             <span class="brand-mark" aria-hidden="true">
               <svg viewBox="0 0 32 32" role="img">
                 <path d="M16 3 27 8v8.2c0 6.2-4.4 10.5-11 13-6.6-2.5-11-6.8-11-13V8l11-5Z"></path>
@@ -490,6 +490,11 @@
     </footer>
     <script>
       (() => {
+        if (window.location.protocol.startsWith("http") && window.location.pathname.endsWith("/index.html")) {
+          const cleanPath = window.location.pathname.replace(/index\.html$/, "");
+          window.history.replaceState(null, "", `${cleanPath}${window.location.search}${window.location.hash}`);
+        }
+
         const map = document.querySelector(".hero-visual");
         const layer = document.querySelector(".route-layer");
         const processMap = document.querySelector(".process-map");
