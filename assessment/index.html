@@ -537,6 +537,9 @@
             : "[ AEGIS ] System Assessment Submission";
         };
 
+        const shouldSubmitWithAjax = () =>
+          ["https://aegisco.co", "https://www.aegisco.co"].includes(window.location.origin);
+
         const focusActiveStep = () => {
           const activeStep = steps[currentStep];
           const target = activeStep.querySelector("input, textarea");
@@ -607,6 +610,11 @@
           if (submittedAt) submittedAt.value = new Date().toISOString();
           if (messageSummary) messageSummary.value = buildSubmissionSummary();
 
+          if (!shouldSubmitWithAjax()) {
+            HTMLFormElement.prototype.submit.call(form);
+            return;
+          }
+
           try {
             const response = await fetch(form.action, {
               method: "POST",
@@ -614,7 +622,11 @@
               headers: { Accept: "application/json" },
             });
 
-            if (!response.ok) throw new Error("Form submission failed");
+            if (!response.ok) {
+              const data = await response.json().catch(() => null);
+              const details = data?.errors?.map((item) => item.message).filter(Boolean).join(" ");
+              throw new Error(details || "Form submission failed");
+            }
 
             form.reset();
             steps.forEach((step) => setStepError(step, ""));
