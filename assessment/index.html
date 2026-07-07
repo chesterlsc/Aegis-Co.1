@@ -10,6 +10,7 @@
     >
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath fill='none' stroke='%230a63ff' stroke-width='3' stroke-linejoin='round' d='M16 3 27 8v8.2c0 6.2-4.4 10.5-11 13-6.6-2.5-11-6.8-11-13V8l11-5Z'/%3E%3Cpath fill='none' stroke='%230a63ff' stroke-width='2' stroke-linecap='round' d='M16 7v18'/%3E%3C/svg%3E">
     <link rel="canonical" href="https://aegisco.co/assessment/">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
     <link rel="stylesheet" href="../styles.css">
   </head>
   <body class="assessment-page">
@@ -122,6 +123,9 @@
             <input type="hidden" name="source_page" value="Assessment">
             <input type="hidden" name="subject" value="[ AEGIS ] System Assessment Submission">
             <input type="hidden" name="form_tag" value="[ AEGIS ]">
+            <input type="hidden" name="submitted_from" value="https://aegisco.co/assessment/">
+            <input type="hidden" name="submitted_at" id="assessment-submitted-at" value="">
+            <textarea class="assessment-hidden-summary" name="message" id="assessment-message-summary" tabindex="-1" autocomplete="off"></textarea>
             <div class="assessment-honeypot" aria-hidden="true">
               <label for="assessment-company-url">Company URL</label>
               <input id="assessment-company-url" type="text" name="_gotcha" tabindex="-1" autocomplete="off">
@@ -386,6 +390,9 @@
         const submitMicrocopy = form?.querySelector("[data-submit-microcopy]");
         const progressCurrent = form?.querySelector("[data-progress-current]");
         const progressBar = form?.querySelector("[data-progress-bar]");
+        const subjectField = form?.querySelector('input[name="subject"]');
+        const submittedAt = form?.querySelector("#assessment-submitted-at");
+        const messageSummary = form?.querySelector("#assessment-message-summary");
 
         if (header && menuToggle && nav) {
           menuToggle.addEventListener("click", () => {
@@ -421,6 +428,38 @@
         const getStepControls = (step) =>
           [...step.querySelectorAll("input, textarea")].filter((control) => control.name && control.name !== "_gotcha");
 
+        const placeholderTokens = new Set([
+          "na",
+          "n/a",
+          "none",
+          "no",
+          "test",
+          "testing",
+          "sample",
+          "asdf",
+          "qwerty",
+          "null",
+          "nil",
+        ]);
+
+        const looksLikePlaceholder = (value) => {
+          const normalized = value.toLowerCase().replace(/[^a-z0-9/]+/g, " ").trim();
+          if (!normalized) return true;
+
+          const tokens = normalized.split(/\s+/).filter(Boolean);
+          const meaningfulTokens = tokens.filter((token) => !placeholderTokens.has(token));
+
+          return normalized.length < 8 || meaningfulTokens.length === 0;
+        };
+
+        const isPlaceholderOnly = (value) => {
+          const normalized = value.toLowerCase().replace(/[^a-z0-9/]+/g, " ").trim();
+          if (!normalized) return true;
+
+          const tokens = normalized.split(/\s+/).filter(Boolean);
+          return !tokens.some((token) => !placeholderTokens.has(token));
+        };
+
         const validateStep = (step, shouldFocus = true) => {
           const controls = getStepControls(step);
           const firstRadio = controls.find((control) => control.type === "radio");
@@ -452,8 +491,50 @@
             return false;
           }
 
+          if (field.tagName === "TEXTAREA" && looksLikePlaceholder(value)) {
+            setStepError(step, "Please add a real answer so we can review the assessment properly.");
+            if (shouldFocus) field.focus();
+            return false;
+          }
+
+          if (field.type === "text" && isPlaceholderOnly(value)) {
+            setStepError(step, "Please add a real answer so we can review the assessment properly.");
+            if (shouldFocus) field.focus();
+            return false;
+          }
+
           setStepError(step, "");
           return true;
+        };
+
+        const formatLabel = (name) =>
+          name
+            .replace(/_/g, " ")
+            .replace(/\b\w/g, (letter) => letter.toUpperCase());
+
+        const buildSubmissionSummary = () => {
+          const data = new FormData(form);
+          const skipFields = new Set(["_gotcha", "subject", "form_tag", "message"]);
+          const lines = ["Aegis & Co. system assessment submission"];
+
+          for (const [name, value] of data.entries()) {
+            if (skipFields.has(name) || !String(value).trim()) continue;
+            lines.push(`${formatLabel(name)}: ${String(value).trim()}`);
+          }
+
+          return lines.join("\n");
+        };
+
+        const updateSubject = () => {
+          if (!subjectField) return;
+
+          const business = form.elements.business_name?.value.trim();
+          const name = form.elements.name?.value.trim();
+          const descriptor = [business, name].filter(Boolean).join(" / ");
+
+          subjectField.value = descriptor
+            ? `[ AEGIS ] Assessment - ${descriptor}`
+            : "[ AEGIS ] System Assessment Submission";
         };
 
         const focusActiveStep = () => {
@@ -521,6 +602,10 @@
           submitButton.disabled = true;
           submitButton.textContent = submitButton.dataset.loadingText;
           setMessage("", "");
+
+          updateSubject();
+          if (submittedAt) submittedAt.value = new Date().toISOString();
+          if (messageSummary) messageSummary.value = buildSubmissionSummary();
 
           try {
             const response = await fetch(form.action, {
