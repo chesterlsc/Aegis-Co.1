@@ -114,7 +114,7 @@
           <form
             class="assessment-form"
             id="assessment-form"
-            action="https://formspree.io/f/xykqlagk"
+            action="https://formspree.io/f/xrewvzgb"
             method="POST"
             novalidate
           >
@@ -122,10 +122,6 @@
             <input type="hidden" name="form_type" value="System Assessment">
             <input type="hidden" name="source_page" value="Assessment">
             <input type="hidden" name="subject" value="[ AEGIS ] System Assessment Submission">
-            <input type="hidden" name="form_tag" value="[ AEGIS ]">
-            <input type="hidden" name="submitted_from" value="https://aegisco.co/assessment/">
-            <input type="hidden" name="submitted_at" id="assessment-submitted-at" value="">
-            <textarea class="assessment-hidden-summary" name="message" id="assessment-message-summary" tabindex="-1" autocomplete="off"></textarea>
             <div class="assessment-honeypot" aria-hidden="true">
               <label for="assessment-company-url">Company URL</label>
               <input id="assessment-company-url" type="text" name="_gotcha" tabindex="-1" autocomplete="off">
@@ -390,9 +386,6 @@
         const submitMicrocopy = form?.querySelector("[data-submit-microcopy]");
         const progressCurrent = form?.querySelector("[data-progress-current]");
         const progressBar = form?.querySelector("[data-progress-bar]");
-        const subjectField = form?.querySelector('input[name="subject"]');
-        const submittedAt = form?.querySelector("#assessment-submitted-at");
-        const messageSummary = form?.querySelector("#assessment-message-summary");
 
         if (header && menuToggle && nav) {
           menuToggle.addEventListener("click", () => {
@@ -428,38 +421,6 @@
         const getStepControls = (step) =>
           [...step.querySelectorAll("input, textarea")].filter((control) => control.name && control.name !== "_gotcha");
 
-        const placeholderTokens = new Set([
-          "na",
-          "n/a",
-          "none",
-          "no",
-          "test",
-          "testing",
-          "sample",
-          "asdf",
-          "qwerty",
-          "null",
-          "nil",
-        ]);
-
-        const looksLikePlaceholder = (value) => {
-          const normalized = value.toLowerCase().replace(/[^a-z0-9/]+/g, " ").trim();
-          if (!normalized) return true;
-
-          const tokens = normalized.split(/\s+/).filter(Boolean);
-          const meaningfulTokens = tokens.filter((token) => !placeholderTokens.has(token));
-
-          return normalized.length < 8 || meaningfulTokens.length === 0;
-        };
-
-        const isPlaceholderOnly = (value) => {
-          const normalized = value.toLowerCase().replace(/[^a-z0-9/]+/g, " ").trim();
-          if (!normalized) return true;
-
-          const tokens = normalized.split(/\s+/).filter(Boolean);
-          return !tokens.some((token) => !placeholderTokens.has(token));
-        };
-
         const validateStep = (step, shouldFocus = true) => {
           const controls = getStepControls(step);
           const firstRadio = controls.find((control) => control.type === "radio");
@@ -491,54 +452,23 @@
             return false;
           }
 
-          if (field.tagName === "TEXTAREA" && looksLikePlaceholder(value)) {
-            setStepError(step, "Please add a real answer so we can review the assessment properly.");
-            if (shouldFocus) field.focus();
-            return false;
-          }
-
-          if (field.type === "text" && isPlaceholderOnly(value)) {
-            setStepError(step, "Please add a real answer so we can review the assessment properly.");
-            if (shouldFocus) field.focus();
-            return false;
-          }
-
           setStepError(step, "");
           return true;
         };
 
-        const formatLabel = (name) =>
-          name
-            .replace(/_/g, " ")
-            .replace(/\b\w/g, (letter) => letter.toUpperCase());
+        const parseFormspreeError = async (response) => {
+          const data = await response.json().catch(() => null);
+          const details = data?.errors
+            ?.map((item) => item.message || item.field)
+            .filter(Boolean)
+            .join(" ");
 
-        const buildSubmissionSummary = () => {
-          const data = new FormData(form);
-          const skipFields = new Set(["_gotcha", "subject", "form_tag", "message"]);
-          const lines = ["Aegis & Co. system assessment submission"];
-
-          for (const [name, value] of data.entries()) {
-            if (skipFields.has(name) || !String(value).trim()) continue;
-            lines.push(`${formatLabel(name)}: ${String(value).trim()}`);
-          }
-
-          return lines.join("\n");
+          return details || `Formspree returned ${response.status}.`;
         };
 
-        const updateSubject = () => {
-          if (!subjectField) return;
-
-          const business = form.elements.business_name?.value.trim();
-          const name = form.elements.name?.value.trim();
-          const descriptor = [business, name].filter(Boolean).join(" / ");
-
-          subjectField.value = descriptor
-            ? `[ AEGIS ] Assessment - ${descriptor}`
-            : "[ AEGIS ] System Assessment Submission";
+        const submitNatively = () => {
+          HTMLFormElement.prototype.submit.call(form);
         };
-
-        const shouldSubmitWithAjax = () =>
-          ["https://aegisco.co", "https://www.aegisco.co"].includes(window.location.origin);
 
         const focusActiveStep = () => {
           const activeStep = steps[currentStep];
@@ -606,12 +536,8 @@
           submitButton.textContent = submitButton.dataset.loadingText;
           setMessage("", "");
 
-          updateSubject();
-          if (submittedAt) submittedAt.value = new Date().toISOString();
-          if (messageSummary) messageSummary.value = buildSubmissionSummary();
-
-          if (!shouldSubmitWithAjax()) {
-            HTMLFormElement.prototype.submit.call(form);
+          if (!window.fetch || !window.location.protocol.startsWith("http")) {
+            submitNatively();
             return;
           }
 
@@ -623,9 +549,9 @@
             });
 
             if (!response.ok) {
-              const data = await response.json().catch(() => null);
-              const details = data?.errors?.map((item) => item.message).filter(Boolean).join(" ");
-              throw new Error(details || "Form submission failed");
+              const details = await parseFormspreeError(response);
+              setMessage(`Formspree could not accept this submission: ${details}`, "error");
+              return;
             }
 
             form.reset();
@@ -636,7 +562,9 @@
               "success"
             );
           } catch (error) {
-            setMessage("something went wrong. please try again.", "error");
+            console.error("Assessment submission error:", error);
+            setMessage("Connection issue while submitting. Opening the secure Formspree submit page now.", "error");
+            submitNatively();
           } finally {
             submitButton.disabled = false;
             submitButton.textContent = submitButton.dataset.defaultText;
