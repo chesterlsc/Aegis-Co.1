@@ -120,6 +120,26 @@ svg {
   color: var(--blue);
 }
 
+.nav-links .nav-cta {
+  min-height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(11, 99, 255, 0.72);
+  border-radius: 6px;
+  padding: 0 18px;
+  background: rgba(11, 99, 255, 0.04);
+  color: var(--ink);
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.nav-links .nav-cta:hover {
+  border-color: var(--blue);
+  background: rgba(11, 99, 255, 0.1);
+  color: var(--blue);
+}
+
 .section-shell {
   width: min(var(--max), calc(100% - 48px));
   margin: 0 auto;
@@ -2674,7 +2694,7 @@ svg {
 
 .footer-grid {
   display: grid;
-  grid-template-columns: 1.35fr 0.85fr 0.95fr 1fr 1.1fr;
+  grid-template-columns: 1.35fr 0.85fr 0.95fr 1.1fr;
   gap: 42px;
   align-items: start;
 }
@@ -3453,9 +3473,16 @@ svg {
 
   .nav-links {
     width: 100%;
+    flex-wrap: wrap;
     justify-content: space-between;
     gap: 10px;
     font-size: 0.84rem;
+  }
+
+  .nav-links .nav-cta {
+    flex: 1 0 100%;
+    min-height: 46px;
+    margin-top: 2px;
   }
 
   .hero {
