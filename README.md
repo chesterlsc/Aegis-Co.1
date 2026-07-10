@@ -73,9 +73,9 @@ Why this version is stronger:
 ## Repository Cleanup
 
 This repository was cleaned for GitHub before publishing:
-- Local editor settings were removed from Git tracking.
-- Local automation/review artifacts are ignored through `.gitignore`.
-- No local assistant, review, or temporary visual files are intended to be committed.
+- Local editor settings were removed from Git tracking and ignored through `.gitignore`.
+- Local-only review notes and temporary visual files were removed before publishing.
+- Git author identity is configured as `chesterlsc` for committed updates.
 
 ## Site Structure
 
