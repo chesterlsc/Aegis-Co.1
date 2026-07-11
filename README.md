@@ -60,7 +60,7 @@ The new homepage is organized around:
 - A focused Revenue Capture System Build offer.
 - A clearer lead-capture workflow visual.
 - A more expressive expansion-path map showing how the system grows over time.
-- A final CTA centered on finding what is slowing the business down.
+- A final CTA centered on finding what's slowing the business down.
 
 Why this version is stronger:
 - The ICP is clearer: service businesses with demand but messy operations.
