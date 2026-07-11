@@ -129,13 +129,20 @@
               </div>
             </div>
             <div class="diagnostic-flow">
-              <h2>Workflow after the system is installed</h2>
+              <div class="df-head">
+                <h2>Workflow after the system is installed</h2>
+                <span class="df-run" aria-hidden="true"><i></i>LIVE RUN</span>
+              </div>
               <div class="flow-steps" aria-label="Lead capture workflow">
-                <div class="flow-step" data-type="trigger"><small>Trigger</small><b>New Lead Captured</b></div>
-                <div class="flow-step" data-type="validate"><small>Validate</small><b>Validate Lead Info</b></div>
-                <div class="flow-step" data-type="decision"><small>Decision</small><b>Qualified?</b></div>
-                <div class="flow-step" data-type="action"><small>Action</small><b>Route &amp; Trigger Follow-up</b></div>
-                <div class="flow-step" data-type="output"><small>Output</small><b>Update CRM &amp; Track Status</b></div>
+                <div class="flow-step" data-type="trigger"><small>Trigger</small><b>New Lead Captured</b><span class="fs-check" aria-hidden="true">&check;</span></div>
+                <div class="flow-step" data-type="validate"><small>Validate</small><b>Validate Lead Info</b><span class="fs-check" aria-hidden="true">&check;</span></div>
+                <div class="flow-step" data-type="decision"><small>Decision</small><b>Qualified?</b><span class="fs-check" aria-hidden="true">&check;</span></div>
+                <div class="flow-step" data-type="action"><small>Action</small><b>Route &amp; Trigger Follow-up</b><span class="fs-check" aria-hidden="true">&check;</span></div>
+                <div class="flow-step" data-type="output"><small>Output</small><b>Update CRM &amp; Track Status</b><span class="fs-check" aria-hidden="true">&check;</span></div>
+              </div>
+              <div class="df-foot" aria-hidden="true">
+                <span class="df-track"><i class="df-progress"></i></span>
+                <span class="df-status">STANDBY</span>
               </div>
             </div>
           </div>

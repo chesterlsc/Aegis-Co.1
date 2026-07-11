@@ -69,7 +69,8 @@
   };
 
   var icon = function (name) {
-    var parsed = new DOMParser().parseFromString(IC[name], "image/svg+xml");
+    var markup = IC[name].replace("<svg ", '<svg xmlns="http://www.w3.org/2000/svg" ');
+    var parsed = new DOMParser().parseFromString(markup, "image/svg+xml");
     var svg = parsed.documentElement;
     svg.setAttribute("aria-hidden", "true");
     svg.setAttribute("focusable", "false");
@@ -88,7 +89,7 @@
 
   var node = function (n) {
     var card = element("div", "fnode");
-    card.style.setProperty("--nacc", n.c || "var(--acc)");
+    card.style.setProperty("--nacc", "var(--acc)");
 
     if (n.num) card.append(element("span", "num", n.num));
 
@@ -239,7 +240,7 @@
       ]
     },
     {
-      acc: C.green,
+      acc: C.blue,
       layout: "timeline",
       kicker: "REVENUE LEAK 02 / 05",
       sys: "SYS: 24-7_DESK_v1.8",
@@ -264,7 +265,7 @@
       ]
     },
     {
-      acc: C.purple,
+      acc: C.blue,
       layout: "conveyor",
       kicker: "REVENUE LEAK 03 / 05",
       sys: "SYS: ORDER_TO_ACCT_v1.4",
@@ -292,7 +293,7 @@
       ]
     },
     {
-      acc: C.amber,
+      acc: C.blue,
       layout: "fanout",
       kicker: "REVENUE LEAK 04 / 05",
       sys: "SYS: BACKOFFICE_v1.2",
@@ -318,7 +319,7 @@
       ]
     },
     {
-      acc: C.cyan,
+      acc: C.blue,
       layout: "loop",
       kicker: "REVENUE LEAK 05 / 05",
       sys: "SYS: DAILY_REPORT_v1.6",
@@ -361,6 +362,10 @@
       document.getElementById("specFixes").textContent = d.fixes;
       document.getElementById("specMeasured").textContent = d.measured;
       body.replaceChildren(DIAGRAMS[d.layout](d));
+      var pulseTargets = body.querySelectorAll(".tl-item, .fnode, .arr, .ainode li, .fan-bracket");
+      Array.prototype.forEach.call(pulseTargets, function (el, idx) {
+        el.style.setProperty("--pulse-delay", (idx * 0.45).toFixed(2) + "s");
+      });
       var stats = document.createDocumentFragment();
       d.stats.forEach(function (stat) {
         var item = element("div", "cstat");
@@ -408,4 +413,58 @@
       card.style.setProperty("--my", e.clientY - r.top + "px");
     });
   });
+
+  /* ---------------- hero pipeline live-run simulation ---------------- */
+
+  var flowRail = document.querySelector(".diagnostic-flow .flow-steps");
+  var flowSteps = flowRail ? Array.prototype.slice.call(flowRail.querySelectorAll(".flow-step")) : [];
+  var dfProgress = document.querySelector(".df-progress");
+  var dfStatus = document.querySelector(".df-status");
+
+  if (flowSteps.length && dfProgress && dfStatus) {
+    var STAGE_STATUS = ["CAPTURING LEAD", "VALIDATING INFO", "QUALIFYING", "ROUTING + FOLLOW-UP", "CRM UPDATED"];
+
+    if (reduceMotion) {
+      flowSteps.forEach(function (s) {
+        s.classList.add("is-done");
+      });
+      dfProgress.style.width = "100%";
+      dfStatus.textContent = "RUN COMPLETE — 0 DROPPED";
+    } else {
+      var stage = -1;
+
+      var followRail = function (step) {
+        if (flowRail.scrollWidth > flowRail.clientWidth + 4) {
+          flowRail.scrollTo({ left: step.offsetLeft - 16, behavior: "smooth" });
+        }
+      };
+
+      var runTick = function () {
+        if (stage >= 0 && stage < flowSteps.length) {
+          flowSteps[stage].classList.remove("is-active");
+          flowSteps[stage].classList.add("is-done");
+        }
+        stage++;
+        if (stage < flowSteps.length) {
+          flowSteps[stage].classList.add("is-active");
+          dfStatus.textContent = STAGE_STATUS[stage] || "";
+          dfProgress.style.width = ((stage + 1) / flowSteps.length) * 100 + "%";
+          followRail(flowSteps[stage]);
+        } else if (stage === flowSteps.length) {
+          dfStatus.textContent = "RUN COMPLETE — 0 DROPPED";
+        } else {
+          flowSteps.forEach(function (s) {
+            s.classList.remove("is-active", "is-done");
+          });
+          dfProgress.style.width = "0%";
+          dfStatus.textContent = "NEW LEAD INCOMING…";
+          followRail(flowSteps[0]);
+          stage = -1;
+        }
+      };
+
+      runTick();
+      window.setInterval(runTick, 1400);
+    }
+  }
 })();
