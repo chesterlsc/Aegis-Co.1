@@ -61,104 +61,150 @@
 
   var C = { blue: "#4F7DFF", green: "#34D399", purple: "#A78BFA", amber: "#FBBF24", orange: "#FB923C", cyan: "#38BDF8" };
 
+  var element = function (tag, className, text) {
+    var created = document.createElement(tag);
+    if (className) created.className = className;
+    if (typeof text !== "undefined") created.textContent = text;
+    return created;
+  };
+
+  var icon = function (name) {
+    var parsed = new DOMParser().parseFromString(IC[name], "image/svg+xml");
+    var svg = parsed.documentElement;
+    svg.setAttribute("aria-hidden", "true");
+    svg.setAttribute("focusable", "false");
+    return document.importNode(svg, true);
+  };
+
+  var appendHighlightedText = function (target, parts, tag) {
+    target.append(document.createTextNode(parts[0]));
+    target.append(element(tag, "", parts[1]));
+    if (parts[2]) target.append(document.createTextNode(parts[2]));
+  };
+
+  var arrow = function (label) {
+    return element("div", "arr", label);
+  };
+
   var node = function (n) {
-    return (
-      '<div class="fnode" style="--nacc:' + (n.c || "var(--acc)") + '">' +
-      (n.num ? '<span class="num">' + n.num + "</span>" : "") +
-      '<span class="fic">' + IC[n.ic] + "</span>" +
-      '<span style="min-width:0"><b>' + n.b + "</b>" + (n.s ? "<small>" + n.s + "</small>" : "") + "</span>" +
-      "</div>"
-    );
+    var card = element("div", "fnode");
+    card.style.setProperty("--nacc", n.c || "var(--acc)");
+
+    if (n.num) card.append(element("span", "num", n.num));
+
+    var iconWrap = element("span", "fic");
+    iconWrap.append(icon(n.ic));
+    card.append(iconWrap);
+
+    var copy = element("span");
+    copy.style.minWidth = "0";
+    copy.append(element("b", "", n.b));
+    if (n.s) copy.append(element("small", "", n.s));
+    card.append(copy);
+
+    return card;
   };
 
   var head = function (d) {
-    return (
-      '<h4 class="c-head">' + d.headline + "</h4>" +
-      '<div class="po-strip">' +
-      '<div class="po bad"><b>THE PROBLEM</b>' + d.problem + "</div>" +
-      '<div class="po good"><b>THE OUTCOME</b>' + d.outcome + "</div>" +
-      "</div>"
-    );
+    var fragment = document.createDocumentFragment();
+    var heading = element("h4", "c-head");
+    appendHighlightedText(heading, d.headline, "em");
+    fragment.append(heading);
+
+    var strip = element("div", "po-strip");
+    var problem = element("div", "po bad");
+    problem.append(element("b", "", "THE PROBLEM"), document.createTextNode(d.problem));
+    var outcome = element("div", "po good");
+    outcome.append(element("b", "", "THE OUTCOME"), document.createTextNode(d.outcome));
+    strip.append(problem, outcome);
+    fragment.append(strip);
+    return fragment;
   };
 
   var DIAGRAMS = {
     converge: function (d) {
-      return (
-        head(d) +
-        '<div class="dg-converge">' +
-        '<div class="dg-col">' + d.inputs.map(node).join("") + "</div>" +
-        '<div class="arr">→</div>' +
-        '<div class="ainode">' +
-        '<div class="ai-t">' + IC.brain + "<b>AI QUALIFIES</b></div>" +
-        "<ul>" + d.checks.map(function (c) { return "<li>" + c + "</li>"; }).join("") + "</ul>" +
-        "</div>" +
-        '<div class="arr">→</div>' +
-        '<div class="dg-col">' + d.outputs.map(node).join("") + "</div>" +
-        "</div>"
-      );
+      var fragment = head(d);
+      var layout = element("div", "dg-converge");
+      var inputs = element("div", "dg-col");
+      d.inputs.forEach(function (item) { inputs.append(node(item)); });
+
+      var qualifier = element("div", "ainode");
+      var qualifierTitle = element("div", "ai-t");
+      qualifierTitle.append(icon("brain"), element("b", "", "AI QUALIFIES"));
+      qualifier.append(qualifierTitle);
+      var checks = element("ul");
+      d.checks.forEach(function (check) { checks.append(element("li", "", check)); });
+      qualifier.append(checks);
+
+      var outputs = element("div", "dg-col");
+      d.outputs.forEach(function (item) { outputs.append(node(item)); });
+      layout.append(inputs, arrow("→"), qualifier, arrow("→"), outputs);
+      fragment.append(layout);
+      return fragment;
     },
     timeline: function (d) {
-      return (
-        head(d) +
-        '<span class="tl-badge">◷ 24/7 — INCLUDING THE HOURS YOUR TEAM SLEEPS</span>' +
-        '<div class="dg-timeline">' +
-        d.events
-          .map(function (e) {
-            return '<div class="tl-item"><time class="' + (e.night ? "night" : "") + '">' + e.t + "</time>" + node(e) + "</div>";
-          })
-          .join("") +
-        "</div>"
-      );
+      var fragment = head(d);
+      fragment.append(element("span", "tl-badge", "◷ 24/7 — INCLUDING THE HOURS YOUR TEAM SLEEPS"));
+      var timeline = element("div", "dg-timeline");
+      d.events.forEach(function (event) {
+        var item = element("div", "tl-item");
+        item.append(element("time", event.night ? "night" : "", event.t), node(event));
+        timeline.append(item);
+      });
+      fragment.append(timeline);
+      return fragment;
     },
     conveyor: function (d) {
       var row = function (arr, back) {
-        return (
-          '<div class="cv-row ' + (back ? "back" : "") + '">' +
-          node(arr[0]) + '<div class="arr">' + (back ? "←" : "→") + "</div>" +
-          node(arr[1]) + '<div class="arr">' + (back ? "←" : "→") + "</div>" +
-          node(arr[2]) +
-          "</div>"
-        );
+        var created = element("div", "cv-row" + (back ? " back" : ""));
+        created.append(node(arr[0]), arrow(back ? "←" : "→"), node(arr[1]), arrow(back ? "←" : "→"), node(arr[2]));
+        return created;
       };
-      return (
-        head(d) +
-        '<div class="dg-conveyor">' +
-        row(d.row1, false) +
-        '<div class="cv-turn"><div class="arr">↓</div></div>' +
-        row(d.row2, true) +
-        "</div>"
-      );
+      var fragment = head(d);
+      var conveyor = element("div", "dg-conveyor");
+      var turn = element("div", "cv-turn");
+      turn.append(arrow("↓"));
+      conveyor.append(row(d.row1, false), turn, row(d.row2, true));
+      fragment.append(conveyor);
+      return fragment;
     },
     fanout: function (d) {
-      return (
-        head(d) +
-        '<div class="dg-fan">' +
-        node(d.trigger) +
-        '<div class="arr">↓</div>' +
-        '<div class="fan-bracket" aria-hidden="true"></div>' +
-        '<div class="fan-row">' + d.branches.map(node).join("") + "</div>" +
-        '<div class="fan-bracket flip" aria-hidden="true"></div>' +
-        '<div class="arr">↓</div>' +
-        node(d.final) +
-        "</div>"
-      );
+      var fragment = head(d);
+      var fan = element("div", "dg-fan");
+      var topBracket = element("div", "fan-bracket");
+      topBracket.setAttribute("aria-hidden", "true");
+      var branches = element("div", "fan-row");
+      d.branches.forEach(function (item) { branches.append(node(item)); });
+      var bottomBracket = element("div", "fan-bracket flip");
+      bottomBracket.setAttribute("aria-hidden", "true");
+      fan.append(node(d.trigger), arrow("↓"), topBracket, branches, bottomBracket, arrow("↓"), node(d.final));
+      fragment.append(fan);
+      return fragment;
     },
     loop: function (d) {
       var placed = function (item, num, pos) {
         var n = { ic: item.ic, b: item.b, s: item.s, c: item.c, num: num };
-        return node(n).replace('class="fnode"', 'class="fnode ' + pos + '"');
+        var created = node(n);
+        created.classList.add(pos);
+        return created;
       };
-      return (
-        head(d) +
-        '<div class="dg-loop">' +
-        '<div class="ring" aria-hidden="true"></div>' +
-        '<div class="core" aria-hidden="true">' + IC.shield + "</div>" +
-        placed(d.cycle[0], 1, "pos-t") +
-        placed(d.cycle[1], 2, "pos-r") +
-        placed(d.cycle[2], 3, "pos-b") +
-        placed(d.cycle[3], 4, "pos-l") +
-        "</div>"
+      var fragment = head(d);
+      var loop = element("div", "dg-loop");
+      var ring = element("div", "ring");
+      ring.setAttribute("aria-hidden", "true");
+      var core = element("div", "core");
+      core.setAttribute("aria-hidden", "true");
+      core.append(icon("shield"));
+      loop.append(
+        ring,
+        core,
+        placed(d.cycle[0], 1, "pos-t"),
+        placed(d.cycle[1], 2, "pos-r"),
+        placed(d.cycle[2], 3, "pos-b"),
+        placed(d.cycle[3], 4, "pos-l")
       );
+      fragment.append(loop);
+      return fragment;
     }
   };
 
@@ -169,10 +215,10 @@
       kicker: "REVENUE LEAK 01 / 05",
       sys: "SYS: LEAD_QUAL_v2.1",
       title: "Lead Qualification",
-      headline: "Never miss a <em>qualified lead</em> again.",
+      headline: ["Never miss a ", "qualified lead", " again."],
       problem: "Leads come from everywhere. No consistent qualification. Slow routing.",
       outcome: "Qualified leads are routed instantly. Teams close more.",
-      when: "Leads arrive from multiple channels and <b>no one owns the next step.</b>",
+      when: ["Leads arrive from multiple channels and ", "no one owns the next step."],
       fixes: "Slow response, missed follow-up, unclear routing.",
       measured: "Speed to lead, booked calls, qualified lead rate.",
       inputs: [
@@ -198,10 +244,10 @@
       kicker: "REVENUE LEAK 02 / 05",
       sys: "SYS: 24-7_DESK_v1.8",
       title: "Follow-up & Booking",
-      headline: "Your 24/7 front desk <em>that never sleeps.</em>",
+      headline: ["Your 24/7 front desk ", "that never sleeps.", ""],
       problem: "Missed after-hours calls. Inconsistent intake. Slow follow-up and handoff.",
       outcome: "Faster response. Better follow-up. Every call handled.",
-      when: "Calls, messages, and requests <b>sit until someone checks them.</b>",
+      when: ["Calls, messages, and requests ", "sit until someone checks them."],
       fixes: "Missed calls, manual callbacks, stalled booking.",
       measured: "Response time, booked jobs, callback completion.",
       events: [
@@ -223,10 +269,10 @@
       kicker: "REVENUE LEAK 03 / 05",
       sys: "SYS: ORDER_TO_ACCT_v1.4",
       title: "Fulfillment Handoffs",
-      headline: "From checkout to accounting, <em>handled in seconds.</em>",
+      headline: ["From checkout to accounting, ", "handled in seconds.", ""],
       problem: "Inventory updates manually. Transactions take time to log. Reporting lags.",
       outcome: "Inventory, records, and reporting stay current on their own.",
-      when: "Client work moves from sales to operations <b>by memory.</b>",
+      when: ["Client work moves from sales to operations ", "by memory."],
       fixes: "Dropped details, manual updates, reporting gaps.",
       measured: "Handoff completion, CRM accuracy, stalled work.",
       row1: [
@@ -251,10 +297,10 @@
       kicker: "REVENUE LEAK 04 / 05",
       sys: "SYS: BACKOFFICE_v1.2",
       title: "Back Office Admin",
-      headline: "Your back office, <em>on autopilot.</em>",
+      headline: ["Your back office, ", "on autopilot.", ""],
       problem: "Repetitive setup tasks. Inconsistent internal handoff. Time lost to admin.",
       outcome: "One trigger, multiple actions. Teams start faster, operations stay organized.",
-      when: "Admin work keeps <b>pulling the team away from client work.</b>",
+      when: ["Admin work keeps ", "pulling the team away from client work."],
       fixes: "Manual entry, repeat checks, delayed internal updates.",
       measured: "Admin hours saved, error rate, processing time.",
       trigger: { ic: "form", b: "Form Filled", s: "One trigger starts everything", c: C.blue },
@@ -277,10 +323,10 @@
       kicker: "REVENUE LEAK 05 / 05",
       sys: "SYS: DAILY_REPORT_v1.6",
       title: "Reporting & Visibility",
-      headline: "Start every day <em>with clarity.</em>",
+      headline: ["Start every day ", "with clarity.", ""],
       problem: "Data lives in different tools. Manual reporting slows decisions.",
       outcome: "Summaries arrive automatically. Teams start informed, every day.",
-      when: "Problems are only visible <b>after they already cost time or revenue.</b>",
+      when: ["Problems are only visible ", "after they already cost time or revenue."],
       fixes: "Late reporting, hidden bottlenecks, unclear ownership.",
       measured: "Daily visibility, stalled-work alerts, decision speed.",
       cycle: [
@@ -309,15 +355,19 @@
       document.getElementById("sysTag").textContent = d.sys;
       document.getElementById("specKicker").textContent = d.kicker;
       document.getElementById("specTitle").textContent = d.title;
-      document.getElementById("specWhen").innerHTML = d.when;
+      var when = document.getElementById("specWhen");
+      when.replaceChildren();
+      appendHighlightedText(when, d.when, "b");
       document.getElementById("specFixes").textContent = d.fixes;
       document.getElementById("specMeasured").textContent = d.measured;
-      body.innerHTML = DIAGRAMS[d.layout](d);
-      statsEl.innerHTML = d.stats
-        .map(function (s) {
-          return '<div class="cstat"><b class="' + s.c + '">' + s.v + "</b><span>" + s.l + "</span></div>";
-        })
-        .join("");
+      body.replaceChildren(DIAGRAMS[d.layout](d));
+      var stats = document.createDocumentFragment();
+      d.stats.forEach(function (stat) {
+        var item = element("div", "cstat");
+        item.append(element("b", stat.c, stat.v), element("span", "", stat.l));
+        stats.append(item);
+      });
+      statsEl.replaceChildren(stats);
     };
 
     var tabs = Array.prototype.slice.call(document.querySelectorAll(".tab"));

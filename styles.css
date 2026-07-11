@@ -3073,6 +3073,44 @@ svg {
   }
 }
 
+@media (min-width: 1121px) and (max-height: 860px) {
+  .assessment-page {
+    height: auto;
+    min-height: 100svh;
+    overflow: visible;
+  }
+
+  .assessment-main {
+    height: auto;
+    min-height: calc(100svh - 72px);
+  }
+
+  .assessment-shell {
+    height: auto;
+    align-items: start;
+  }
+
+  .assessment-aside {
+    position: sticky;
+    top: 24px;
+    height: auto;
+    overflow: visible;
+  }
+
+  .assessment-panel,
+  .assessment-form {
+    height: auto;
+  }
+
+  .assessment-panel {
+    overflow: visible;
+  }
+
+  .assessment-form {
+    grid-template-rows: auto;
+  }
+}
+
 @media (max-width: 1120px) {
   .hero,
   .connect-grid {
