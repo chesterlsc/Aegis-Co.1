@@ -3,6 +3,11 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; base-uri 'none'; object-src 'none'; script-src 'self' 'sha256-GGcGjLOO1AXhYBX+t7Pg5BjmKt/GWuAVX7vfLrklPRk='; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; form-action 'none'; frame-src 'none'; worker-src 'none'; manifest-src 'self'"
+    >
     <title>Aegis & Co. | Revenue Capture Systems for Service Businesses</title>
     <meta
       name="description"
@@ -159,101 +164,55 @@
         </div>
       </section>
 
-      <section class="revenue-leaks-section" id="leaks">
-        <div class="section-shell">
-          <div class="split-heading" data-reveal>
-            <div>
-              <p class="eyebrow">Common Revenue Leaks We Fix First</p>
-              <h2>Most revenue leaks happen after demand shows up.</h2>
+      <section class="leaks" id="leaks">
+        <div class="wrap">
+          <div class="leaks-head">
+            <div data-reveal>
+              <span class="eyebrow"><span class="dot"></span>Common revenue leaks we fix first</span>
+              <h2>Most revenue leaks happen <em>after demand shows up.</em></h2>
             </div>
-            <p>Service businesses usually don't lose revenue from lack of demand. They lose it in how work moves after demand shows up.</p>
-          </div>
-          <div class="leak-tabs" role="tablist" aria-label="Revenue leak types" data-reveal>
-            <button class="leak-tab is-active" type="button" role="tab" aria-selected="true" aria-controls="leak-view-1" id="leak-tab-1">Lead Qualification</button>
-            <button class="leak-tab" type="button" role="tab" aria-selected="false" aria-controls="leak-view-2" id="leak-tab-2">Follow-up &amp; Booking</button>
-            <button class="leak-tab" type="button" role="tab" aria-selected="false" aria-controls="leak-view-3" id="leak-tab-3">Fulfillment Handoffs</button>
-            <button class="leak-tab" type="button" role="tab" aria-selected="false" aria-controls="leak-view-4" id="leak-tab-4">Back Office Admin</button>
-            <button class="leak-tab" type="button" role="tab" aria-selected="false" aria-controls="leak-view-5" id="leak-tab-5">Reporting &amp; Visibility</button>
-          </div>
-          <div class="leak-stage-wrap" data-reveal>
-            <button class="leak-arrow prev" type="button" aria-label="Previous revenue leak">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"></path></svg>
-            </button>
-            <div class="leak-stage">
-            <article class="leak-view is-active" role="tabpanel" id="leak-view-1" aria-labelledby="leak-tab-1">
-              <div class="leak-view-media">
-                <img src="assets/flows/lead-qualification.png" alt="Lead qualification flowchart showing capture, qualification, routing, CRM updates, and lead notifications.">
-              </div>
-              <div class="leak-view-info">
-                <h3>Lead Qualification</h3>
-                <div class="leak-meta">
-                  <p><span>Use this when:</span> Leads arrive from multiple channels and no one owns the next step.</p>
-                  <p><span>This fixes:</span> Slow response, missed follow-up, unclear routing.</p>
-                  <p><span>Measured by:</span> Speed to lead, booked calls, qualified lead rate.</p>
-                </div>
-                <a class="button button-primary" href="assessment/">See If This Is Slowing You Down &rarr;</a>
-              </div>
-            </article>
-            <article class="leak-view" role="tabpanel" id="leak-view-2" aria-labelledby="leak-tab-2" hidden>
-              <div class="leak-view-media">
-                <img src="assets/flows/call-handling.png" alt="Call handling flowchart showing incoming call handling, routing, CRM update, and customer follow-up." loading="lazy">
-              </div>
-              <div class="leak-view-info">
-                <h3>Follow-up &amp; Booking</h3>
-                <div class="leak-meta">
-                  <p><span>Use this when:</span> Calls, messages, and requests sit until someone checks them.</p>
-                  <p><span>This fixes:</span> Missed calls, manual callbacks, stalled booking.</p>
-                  <p><span>Measured by:</span> Response time, booked jobs, callback completion.</p>
-                </div>
-                <a class="button button-primary" href="assessment/">See If This Is Slowing You Down &rarr;</a>
-              </div>
-            </article>
-            <article class="leak-view" role="tabpanel" id="leak-view-3" aria-labelledby="leak-tab-3" hidden>
-              <div class="leak-view-media">
-                <img src="assets/flows/order-to-accounting.png" alt="Order to accounting flowchart showing order intake, validation, accounting updates, and reporting." loading="lazy">
-              </div>
-              <div class="leak-view-info">
-                <h3>Fulfillment Handoffs</h3>
-                <div class="leak-meta">
-                  <p><span>Use this when:</span> Client work moves from sales to operations by memory.</p>
-                  <p><span>This fixes:</span> Dropped details, manual updates, reporting gaps.</p>
-                  <p><span>Measured by:</span> Handoff completion, CRM accuracy, stalled work.</p>
-                </div>
-                <a class="button button-primary" href="assessment/">See If This Is Slowing You Down &rarr;</a>
-              </div>
-            </article>
-            <article class="leak-view" role="tabpanel" id="leak-view-4" aria-labelledby="leak-tab-4" hidden>
-              <div class="leak-view-media">
-                <img src="assets/flows/back-office-automation.png" alt="Back office automation flowchart showing request intake, validation, action, and record updates." loading="lazy">
-              </div>
-              <div class="leak-view-info">
-                <h3>Back Office Admin</h3>
-                <div class="leak-meta">
-                  <p><span>Use this when:</span> Admin work keeps pulling the team away from client work.</p>
-                  <p><span>This fixes:</span> Manual entry, repeat checks, delayed internal updates.</p>
-                  <p><span>Measured by:</span> Admin hours saved, error rate, processing time.</p>
-                </div>
-                <a class="button button-primary" href="assessment/">See If This Is Slowing You Down &rarr;</a>
-              </div>
-            </article>
-            <article class="leak-view" role="tabpanel" id="leak-view-5" aria-labelledby="leak-tab-5" hidden>
-              <div class="leak-view-media">
-                <img src="assets/flows/daily-reporting-loop.png" alt="Daily reporting loop flowchart showing data capture, reporting, review, and action." loading="lazy">
-              </div>
-              <div class="leak-view-info">
-                <h3>Reporting &amp; Visibility</h3>
-                <div class="leak-meta">
-                  <p><span>Use this when:</span> Problems are only visible after they already cost time or revenue.</p>
-                  <p><span>This fixes:</span> Late reporting, hidden bottlenecks, unclear ownership.</p>
-                  <p><span>Measured by:</span> Daily visibility, stalled-work alerts, decision speed.</p>
-                </div>
-                <a class="button button-primary" href="assessment/">See If This Is Slowing You Down &rarr;</a>
-              </div>
-            </article>
+            <div class="reveal-delay-80" data-reveal>
+              <p class="leaks-sub">Service businesses usually don't lose revenue from lack of demand. <strong>They lose it in how work moves after demand shows up.</strong></p>
             </div>
-            <button class="leak-arrow next" type="button" aria-label="Next revenue leak">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"></path></svg>
-            </button>
+          </div>
+
+          <div class="tabs-shell" id="tabsShell" data-reveal>
+            <div class="tabs" role="tablist" aria-label="Revenue leak areas" id="tabRail">
+              <button class="tab" type="button" role="tab" aria-selected="true" data-leak="0"><span class="n">01</span>Lead Qualification</button>
+              <button class="tab" type="button" role="tab" aria-selected="false" data-leak="1"><span class="n">02</span>Follow-up &amp; Booking</button>
+              <button class="tab" type="button" role="tab" aria-selected="false" data-leak="2"><span class="n">03</span>Fulfillment Handoffs</button>
+              <button class="tab" type="button" role="tab" aria-selected="false" data-leak="3"><span class="n">04</span>Back Office Admin</button>
+              <button class="tab" type="button" role="tab" aria-selected="false" data-leak="4"><span class="n">05</span>Reporting &amp; Visibility</button>
+            </div>
+          </div>
+
+          <div class="leak-desk" id="leakPanel" data-reveal>
+            <div class="console-frame" id="consoleFrame">
+              <div class="console">
+                <div class="console-top">
+                  <span class="lights"><i></i><i></i><i></i></span>
+                  <span class="ct-label">AEGIS &amp; CO. — SYSTEM VIEW</span>
+                  <span class="sys" id="sysTag">SYS: LEAD_QUAL_v2.1</span>
+                </div>
+                <div class="console-body" id="consoleBody"></div>
+                <div class="console-stats" id="consoleStats"></div>
+              </div>
+            </div>
+
+            <div class="spec">
+              <span class="spec-kicker" id="specKicker"></span>
+              <h3 id="specTitle"></h3>
+              <dl class="spec-list">
+                <div class="spec-row"><dt>Use this when</dt><dd id="specWhen"></dd></div>
+                <div class="spec-row"><dt>This fixes</dt><dd id="specFixes"></dd></div>
+                <div class="spec-row"><dt>Measured by</dt><dd id="specMeasured"></dd></div>
+              </dl>
+              <a class="cta" href="assessment/">
+                See If This Is Slowing You Down
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+              </a>
+              <span class="cta-note">// 12 questions · takes 3 minutes · no email required to see results</span>
+            </div>
           </div>
         </div>
       </section>
@@ -314,21 +273,119 @@
         </div>
       </section>
 
-      <section class="section-shell revision-outcomes">
-        <div class="split-heading" data-reveal>
-          <div>
-            <p class="eyebrow">What Changes When Your Workflows Actually Work</p>
-            <h2>Work moves without constant oversight.</h2>
+      <section class="outcomes" id="outcomes">
+        <div class="wrap">
+          <div class="outcomes-head">
+            <div data-reveal>
+              <span class="eyebrow"><span class="dot"></span>What changes when your workflows actually work</span>
+              <h2>Work moves without <em>constant oversight.</em></h2>
+            </div>
+            <div class="reveal-delay-80" data-reveal>
+              <p class="outcomes-sub">Most businesses don't break from lack of effort. <strong>They break from how work moves.</strong> This is what changes when the system carries it instead of people.</p>
+              <span class="head-meta"><b>&#9679; SYSTEM ONLINE</b><span class="sep"></span>SYS: LEAD_CAPTURE_v2.1<span class="sep"></span>0 MANUAL HANDOFFS</span>
+            </div>
           </div>
-          <p>Most businesses don't break from lack of effort. They break from how work moves.</p>
-        </div>
-        <div class="outcome-grid">
-          <article class="outcome-card" data-reveal><h2>Work Stops Relying on Memory</h2><p>Follow-ups, routing, and updates happen automatically instead of depending on someone remembering.</p></article>
-          <article class="outcome-card" data-reveal><h2>Nothing Gets Dropped Between Steps</h2><p>Every lead, task, and client moves through a defined path instead of getting lost between people.</p></article>
-          <article class="outcome-card" data-reveal><h2>You See Problems Before They Cost You</h2><p>Revenue signals, stalled work, and missed activity show up in real time, not after it is too late.</p></article>
-          <article class="outcome-card" data-reveal><h2>You Know What's Happening</h2><p>You don't need to chase updates. The system shows exactly what's moving and what's stuck.</p></article>
-          <article class="outcome-card" data-reveal><h2>Your Business Runs Without Constant Oversight</h2><p>Core workflows run the same way every time, so growth does not require more of your attention.</p></article>
-          <article class="outcome-card" data-reveal><h2>Growth Stops Creating More Chaos</h2><p>Adding more clients does not break operations because the system scales with demand.</p></article>
+
+          <div class="perimeter reveal-delay-120" data-reveal>
+            <div class="per-decor" aria-hidden="true">
+              <div class="radar"></div>
+              <div class="shield-mark">
+                <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"></path><path d="M12 22s5.5-2.8 5.5-7V6.4L12 4.3 6.5 6.4V15c0 4.2 5.5 7 5.5 7Z"></path></svg>
+              </div>
+            </div>
+            <span class="pc tl"></span><span class="pc tr"></span><span class="pc bl"></span><span class="pc br"></span>
+            <span class="per-label"><span class="led"></span><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"></path></svg>AEGIS PERIMETER — 6 MODULES SECURED</span>
+            <span class="per-scan" aria-hidden="true"></span>
+
+            <div class="bento">
+              <article class="module featured">
+                <span class="tick tl"></span><span class="tick tr"></span><span class="tick bl"></span><span class="tick br"></span>
+                <div class="module-top">
+                  <span class="chip-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 0 1 4 4c0 1.1-.45 2.1-1.17 2.83M12 2a4 4 0 0 0-4 4c0 1.1.45 2.1 1.17 2.83M12 2v20M8 22h8M5 12h14M7.5 8.8 5 12l2.5 3.2M16.5 8.8 19 12l-2.5 3.2"></path></svg></span>
+                  <span class="mod-tag"><span class="led"></span>MODULE 01 · AUTOMATED</span>
+                </div>
+                <h3>Work stops relying on memory</h3>
+                <p>Follow-ups, routing, and updates fire the moment work moves — not when someone finally remembers at 4:45pm on a Friday.</p>
+                <div class="feed" aria-hidden="true">
+                  <div class="feed-bar"><span class="lights"><i></i><i></i><i></i></span>LIVE ACTIVITY — ENCRYPTED FEED</div>
+                  <div class="feed-row"><time>09:41</time><span>New lead captured &rarr; follow-up scheduled</span><b class="ok">&check; AUTO</b></div>
+                  <div class="feed-row"><time>09:47</time><span>No reply in 5m &rarr; second touch triggered</span><b class="ok">&check; AUTO</b></div>
+                </div>
+                <div class="shift"><span class="was">someone remembers</span><span class="arrow">&rarr;</span><span class="now">the system remembers</span></div>
+              </article>
+
+              <article class="module">
+                <span class="tick tl"></span><span class="tick tr"></span><span class="tick bl"></span><span class="tick br"></span>
+                <div class="module-top">
+                  <span class="chip-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h6M14 6h6M4 12h16M4 18h6M14 18h6"></path><circle cx="12" cy="6" r="1.6"></circle><circle cx="12" cy="18" r="1.6"></circle></svg></span>
+                  <span class="mod-tag"><span class="led"></span>02 · ZERO-DROP</span>
+                </div>
+                <h3>Nothing gets dropped between steps</h3>
+                <p>Every lead, task, and client moves through a defined path with a named owner — nothing lost between people.</p>
+                <div class="shift"><span class="was">lost in handoff</span><span class="arrow">&rarr;</span><span class="now">defined path</span></div>
+              </article>
+
+              <article class="module">
+                <span class="tick tl"></span><span class="tick tr"></span><span class="tick bl"></span><span class="tick br"></span>
+                <div class="module-top">
+                  <span class="chip-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01M10.3 3.9 2.5 17.5a2 2 0 0 0 1.7 3h15.6a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"></path></svg></span>
+                  <span class="mod-tag"><span class="led"></span>03 · REAL-TIME</span>
+                </div>
+                <h3>You see problems before they cost you</h3>
+                <p>Revenue signals and stalled work surface the moment they happen — not after the deal is already gone.</p>
+                <div class="shift"><span class="was">found too late</span><span class="arrow">&rarr;</span><span class="now">flagged instantly</span></div>
+              </article>
+
+              <article class="module">
+                <span class="tick tl"></span><span class="tick tr"></span><span class="tick bl"></span><span class="tick br"></span>
+                <div class="module-top">
+                  <span class="chip-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"></path><circle cx="12" cy="12" r="3"></circle></svg></span>
+                  <span class="mod-tag"><span class="led"></span>04 · VISIBILITY</span>
+                </div>
+                <h3>You know what's happening</h3>
+                <p>No chasing updates. The system shows what's moving, what's stuck, and who owns the next step.</p>
+                <div class="shift"><span class="was">chasing updates</span><span class="arrow">&rarr;</span><span class="now">one live view</span></div>
+              </article>
+
+              <article class="module">
+                <span class="tick tl"></span><span class="tick tr"></span><span class="tick bl"></span><span class="tick br"></span>
+                <div class="module-top">
+                  <span class="chip-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg></span>
+                  <span class="mod-tag"><span class="led"></span>05 · AUTONOMY</span>
+                </div>
+                <h3>Runs without you watching</h3>
+                <p>Core workflows run the same way every time — growth stops demanding your personal attention.</p>
+                <div class="shift"><span class="was">owner-dependent</span><span class="arrow">&rarr;</span><span class="now">self-running</span></div>
+              </article>
+
+              <article class="module wide">
+                <span class="tick tl"></span><span class="tick tr"></span><span class="tick bl"></span><span class="tick br"></span>
+                <div class="module-top">
+                  <span class="chip-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"></path><path d="M15 7h6v6"></path></svg></span>
+                  <span class="mod-tag"><span class="led"></span>MODULE 06 · SCALE</span>
+                </div>
+                <h3>Growth stops creating more chaos</h3>
+                <div class="wide-body">
+                  <p>Adding more clients no longer breaks operations. The system absorbs the volume and scales with demand — quietly, in the background.</p>
+                  <div class="loadviz" aria-hidden="true">
+                    <div class="bars">
+                      <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+                    </div>
+                    <small>LOAD ABSORBED &nearr;</small>
+                  </div>
+                </div>
+                <div class="shift"><span class="was">growth = chaos</span><span class="arrow">&rarr;</span><span class="now">growth = throughput</span></div>
+              </article>
+            </div>
+
+            <div class="per-foot">
+              <span class="enc"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>PERIMETER LOCKED</span>
+              <span>CHECKSUM 7F2A-90C1 · OK</span>
+              <span class="spacer"></span>
+              <span>SCAN INTERVAL 7.0s</span>
+              <span class="ok">&#9679; UPTIME 99.98%</span>
+            </div>
+          </div>
         </div>
       </section>
 

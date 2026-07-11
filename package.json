@@ -1,0 +1,14 @@
+{
+  "name": "aegis-security-regression",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "security:static": "node scripts/security-check.mjs",
+    "security:browser": "playwright test",
+    "security:test": "npm run security:static && npm run security:browser"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.61.1"
+  }
+}

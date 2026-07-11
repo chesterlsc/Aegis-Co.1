@@ -1,0 +1,337 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - link "Aegis & Co. home" [ref=e3] [cursor=pointer]:
+      - /url: /
+      - generic [ref=e8]: Aegis & Co.
+    - navigation "Primary navigation" [ref=e9]:
+      - link "Revenue Leaks" [ref=e10] [cursor=pointer]:
+        - /url: "#leaks"
+      - link "System Build" [ref=e11] [cursor=pointer]:
+        - /url: "#offer"
+      - link "Process" [ref=e12] [cursor=pointer]:
+        - /url: "#process"
+      - link "Contact" [ref=e13] [cursor=pointer]:
+        - /url: assessment/
+      - link "Find What's Slowing You Down" [ref=e14] [cursor=pointer]:
+        - /url: assessment/
+  - main [ref=e15]:
+    - generic [ref=e16]:
+      - generic [ref=e17]:
+        - paragraph [ref=e18]: For service businesses with demand, but messy operations.
+        - heading "Stop Losing Revenue to Missed Follow-Ups and Manual Handoffs" [level=1] [ref=e19]
+        - paragraph [ref=e20]: We build systems that capture every lead, route work automatically, and keep follow-up moving without relying on people to remember.
+        - generic "Primary actions" [ref=e21]:
+          - link "Find What's Slowing You Down" [ref=e22] [cursor=pointer]:
+            - /url: assessment/
+          - link "See Workflow Breakdowns" [ref=e26] [cursor=pointer]:
+            - /url: "#leaks"
+        - paragraph [ref=e30]: In 12 questions, see where your workflow is leaking time and revenue.
+      - generic "Revenue capture system diagnostic" [ref=e31]:
+        - generic [ref=e32]:
+          - generic [ref=e33]:
+            - generic [ref=e34]: Revenue Capture System
+            - generic [ref=e36]: "SYS: LEAD_CAPTURE_v2.1"
+          - generic [ref=e37]:
+            - generic [ref=e38]:
+              - generic [ref=e39]: Leak
+              - generic [ref=e40]:
+                - strong [ref=e41]: Lead captured after hours
+                - text: Follow-up waits until someone checks inbox
+              - generic [ref=e42]: 12h lag
+            - generic [ref=e43]:
+              - generic [ref=e44]: Leak
+              - generic [ref=e45]:
+                - strong [ref=e46]: Qualified lead needs routing
+                - text: No clear owner after form submission
+              - generic [ref=e47]: Miss risk
+            - generic [ref=e48]:
+              - generic [ref=e49]: Fixed
+              - generic [ref=e50]:
+                - strong [ref=e51]: Auto-route and follow-up trigger
+                - text: CRM status updates and team sees next step
+              - generic [ref=e52]: Live
+          - generic [ref=e53]:
+            - heading "Workflow after the system is installed" [level=2] [ref=e54]
+            - generic "Lead capture workflow" [ref=e55]:
+              - generic [ref=e56]:
+                - generic [ref=e57]: Trigger
+                - generic [ref=e58]: New Lead Captured
+              - generic [ref=e59]:
+                - generic [ref=e60]: Validate
+                - generic [ref=e61]: Validate Lead Info
+              - generic [ref=e62]:
+                - generic [ref=e63]: Decision
+                - generic [ref=e64]: Qualified?
+              - generic [ref=e65]:
+                - generic [ref=e66]: Action
+                - generic [ref=e67]: Route & Trigger Follow-up
+              - generic [ref=e68]:
+                - generic [ref=e69]: Output
+                - generic [ref=e70]: Update CRM & Track Status
+    - generic [ref=e72]:
+      - generic [ref=e73]:
+        - paragraph [ref=e74]: This is for you if...
+        - heading "Your team is busy, but work still stalls." [level=2] [ref=e75]
+        - paragraph [ref=e76]: Most businesses don't notice where this breaks until it starts costing them.
+        - generic [ref=e77]:
+          - heading "Find the workflow leak before it becomes normal." [level=3] [ref=e78]
+          - paragraph [ref=e79]: It takes 12 questions to identify where your workflow is leaking time and revenue.
+          - link "Find What's Slowing You Down" [ref=e80] [cursor=pointer]:
+            - /url: assessment/
+      - generic [ref=e81]:
+        - generic [ref=e82]:
+          - generic [ref=e83]: "01"
+          - generic [ref=e84]: Leads are coming in, but follow-up is not consistent
+          - generic [ref=e85]: ✓
+        - generic [ref=e86]:
+          - generic [ref=e87]: "02"
+          - generic [ref=e88]: Your team is busy, but work still stalls
+          - generic [ref=e89]: ✓
+        - generic [ref=e90]:
+          - generic [ref=e91]: "03"
+          - generic [ref=e92]: Every new client creates more admin
+          - generic [ref=e93]: ✓
+        - generic [ref=e94]:
+          - generic [ref=e95]: "04"
+          - generic [ref=e96]: Work moves through people instead of systems
+          - generic [ref=e97]: ✓
+        - generic [ref=e98]:
+          - generic [ref=e99]: "05"
+          - generic [ref=e100]: You're still checking things that should run automatically
+          - generic [ref=e101]: ✓
+    - generic [ref=e103]:
+      - generic [ref=e104]:
+        - generic [ref=e105]:
+          - generic [ref=e106]: Common revenue leaks we fix first
+          - heading [level=2] [ref=e107]:
+            - text: Most revenue leaks happen
+            - emphasis [ref=e108]: after demand shows up.
+        - paragraph [ref=e110]:
+          - text: Service businesses usually don't lose revenue from lack of demand.
+          - strong [ref=e111]: They lose it in how work moves after demand shows up.
+      - tablist "Revenue leak areas" [ref=e113]:
+        - tab "01Lead Qualification" [selected] [ref=e114]
+        - tab "02Follow-up & Booking" [ref=e115]
+        - tab "03Fulfillment Handoffs" [ref=e116]
+        - tab "04Back Office Admin" [ref=e117]
+        - tab "05Reporting & Visibility" [ref=e118]
+      - generic [ref=e119]:
+        - generic [ref=e120]: "AEGIS & CO. — SYSTEM VIEW SYS: LEAD_QUAL_v2.1"
+        - generic [ref=e123]:
+          - heading [level=3]
+          - generic [ref=e124]:
+            - generic [ref=e125]:
+              - term [ref=e126]: Use this when
+              - definition
+            - generic [ref=e127]:
+              - term [ref=e128]: This fixes
+              - definition
+            - generic [ref=e129]:
+              - term [ref=e130]: Measured by
+              - definition
+          - link "See If This Is Slowing You Down" [ref=e131] [cursor=pointer]:
+            - /url: assessment/
+          - text: // 12 questions · takes 3 minutes · no email required to see results
+    - generic [ref=e135]:
+      - generic [ref=e136]:
+        - paragraph [ref=e137]: Start with the Workflow Closest to Revenue
+        - heading "We fix the workflow already costing you leads, time, and revenue." [level=2] [ref=e138]
+        - paragraph [ref=e139]: We don't rebuild your entire operation at once. We fix what's closest to revenue first, then expand from there.
+      - complementary [ref=e140]:
+        - heading "Revenue Capture System Build" [level=3] [ref=e141]
+        - paragraph [ref=e142]: A 14-21 day build focused on fixing how leads are captured, qualified, routed, and followed up so demand you already have actually turns into revenue.
+        - list [ref=e143]:
+          - listitem [ref=e144]: Capture every lead from every channel
+          - listitem [ref=e146]: Qualify and route automatically
+          - listitem [ref=e148]: Trigger consistent follow-up
+          - listitem [ref=e150]: Update your CRM without manual entry
+          - listitem [ref=e152]: Give your team visibility into what's happening
+        - paragraph [ref=e154]: This is not a one-off automation. This is the first layer of your operating system.
+        - link "Find What's Slowing You Down" [ref=e155] [cursor=pointer]:
+          - /url: assessment/
+    - generic [ref=e157]:
+      - complementary [ref=e158]:
+        - paragraph [ref=e159]: System Visual
+        - heading "This is What Your Workflows Should Look Like" [level=2] [ref=e160]
+        - paragraph [ref=e161]: Most service businesses rely on people to move work forward, which is where follow-ups get missed, handoffs break, and revenue slips.
+        - paragraph [ref=e162]: Every system we build replaces that with a clear path from trigger to outcome so work moves consistently and nothing falls through.
+        - generic [ref=e163]: "SYS: LEAD_CAPTURE_v2.1"
+      - generic "Lead capture workflow visual" [ref=e164]:
+        - generic [ref=e165]:
+          - generic [ref=e166]: System Status
+          - strong [ref=e167]: Running Without Manual Handoffs
+        - generic [ref=e169]:
+          - generic [ref=e170]:
+            - strong [ref=e171]: Trigger
+            - generic [ref=e172]: New Lead Captured
+          - generic [ref=e173]:
+            - strong [ref=e174]: Validate
+            - generic [ref=e175]: Validate Lead Info
+          - generic [ref=e176]:
+            - strong [ref=e177]: Decision
+            - generic [ref=e178]: Qualified?
+          - generic [ref=e179]:
+            - strong [ref=e180]: Action
+            - generic [ref=e181]: Route & Trigger Follow-up
+          - generic [ref=e182]:
+            - strong [ref=e183]: Output
+            - generic [ref=e184]: Update CRM & Track Status
+    - generic [ref=e190]:
+      - generic [ref=e191]:
+        - generic [ref=e192]:
+          - generic [ref=e193]: What changes when your workflows actually work
+          - heading [level=2] [ref=e194]:
+            - text: Work moves without
+            - emphasis [ref=e195]: constant oversight.
+        - generic [ref=e196]:
+          - paragraph [ref=e197]:
+            - text: Most businesses don't break from lack of effort.
+            - strong [ref=e198]: They break from how work moves.
+            - text: This is what changes when the system carries it instead of people.
+          - generic [ref=e199]: "● SYSTEM ONLINESYS: LEAD_CAPTURE_v2.10 MANUAL HANDOFFS"
+      - generic [ref=e200]:
+        - generic [ref=e201]: AEGIS PERIMETER — 6 MODULES SECURED
+        - generic [ref=e204]:
+          - article [ref=e205]:
+            - generic [ref=e206]: MODULE 01 · AUTOMATED
+            - heading "Work stops relying on memory" [level=3] [ref=e211]
+            - paragraph [ref=e212]: Follow-ups, routing, and updates fire the moment work moves — not when someone finally remembers at 4:45pm on a Friday.
+            - generic [ref=e213]:
+              - generic [ref=e214]: LIVE ACTIVITY — ENCRYPTED FEED
+              - generic [ref=e215]:
+                - time [ref=e216]: 09:41
+                - text: New lead captured → follow-up scheduled✓ AUTO
+              - generic [ref=e217]:
+                - time [ref=e218]: 09:47
+                - text: No reply in 5m → second touch triggered✓ AUTO
+            - generic [ref=e219]: someone remembers→the system remembers
+          - article [ref=e220]:
+            - generic [ref=e221]: 02 · ZERO-DROP
+            - heading "Nothing gets dropped between steps" [level=3] [ref=e228]
+            - paragraph [ref=e229]: Every lead, task, and client moves through a defined path with a named owner — nothing lost between people.
+            - generic [ref=e230]: lost in handoff→defined path
+          - article [ref=e231]:
+            - generic [ref=e232]: 03 · REAL-TIME
+            - heading "You see problems before they cost you" [level=3] [ref=e237]
+            - paragraph [ref=e238]: Revenue signals and stalled work surface the moment they happen — not after the deal is already gone.
+            - generic [ref=e239]: found too late→flagged instantly
+          - article [ref=e240]:
+            - generic [ref=e241]: 04 · VISIBILITY
+            - heading "You know what's happening" [level=3] [ref=e247]
+            - paragraph [ref=e248]: No chasing updates. The system shows what's moving, what's stuck, and who owns the next step.
+            - generic [ref=e249]: chasing updates→one live view
+          - article [ref=e250]:
+            - generic [ref=e251]: 05 · AUTONOMY
+            - heading "Runs without you watching" [level=3] [ref=e257]
+            - paragraph [ref=e258]: Core workflows run the same way every time — growth stops demanding your personal attention.
+            - generic [ref=e259]: owner-dependent→self-running
+          - article [ref=e260]:
+            - generic [ref=e261]: MODULE 06 · SCALE
+            - heading "Growth stops creating more chaos" [level=3] [ref=e267]
+            - generic [ref=e268]:
+              - paragraph [ref=e269]: Adding more clients no longer breaks operations. The system absorbs the volume and scales with demand — quietly, in the background.
+              - generic [ref=e270]: LOAD ABSORBED ↗
+            - generic [ref=e271]: growth = chaos→growth = throughput
+        - generic [ref=e272]:
+          - generic [ref=e273]: PERIMETER LOCKED
+          - text: CHECKSUM 7F2A-90C1 · OK SCAN INTERVAL 7.0s ● UPTIME 99.98%
+    - generic [ref=e277]:
+      - generic [ref=e278]:
+        - generic [ref=e279]:
+          - paragraph [ref=e280]: How We Fix Your Workflows
+          - heading "We map what's happening, fix it, then build from there." [level=2] [ref=e281]
+        - paragraph [ref=e282]: We don't guess. We map what's actually happening, fix the leakage point, and expand the system as new bottlenecks show up.
+      - generic [ref=e283]:
+        - article [ref=e284]:
+          - strong [ref=e285]: Map
+          - paragraph [ref=e286]: Identify where your workflow is breaking, slowing down, or relying on manual work.
+        - article [ref=e287]:
+          - strong [ref=e288]: Design
+          - paragraph [ref=e289]: Create the system logic, architecture, rules, and flows.
+        - article [ref=e290]:
+          - strong [ref=e291]: Build
+          - paragraph [ref=e292]: Build the system that captures, routes, and moves work automatically.
+        - article [ref=e293]:
+          - strong [ref=e294]: Test
+          - paragraph [ref=e295]: Test the system to make sure nothing breaks, gets missed, or falls through.
+        - article [ref=e296]:
+          - strong [ref=e297]: Improve
+          - paragraph [ref=e298]: Refine and expand the system as new workflows and bottlenecks show up.
+    - generic [ref=e299]:
+      - generic [ref=e300]:
+        - generic [ref=e301]:
+          - paragraph [ref=e302]: How Your System Expands Over Time
+          - heading "Fix what's closest to revenue first." [level=2] [ref=e303]
+        - paragraph [ref=e304]: We don't fix everything at once. We fix what's closest to revenue first, then expand the system from there.
+      - generic "System expansion areas" [ref=e305]:
+        - generic [ref=e306]:
+          - generic [ref=e307]:
+            - generic [ref=e308]: "01"
+            - strong [ref=e309]: Lead Capture & Routing
+          - generic [ref=e310]:
+            - generic [ref=e311]: "02"
+            - strong [ref=e312]: Follow-up & Booking
+          - generic [ref=e313]:
+            - generic [ref=e314]: "03"
+            - strong [ref=e315]: Client Onboarding
+          - generic [ref=e316]:
+            - generic [ref=e317]: "04"
+            - strong [ref=e318]: Fulfillment Handoffs
+          - generic [ref=e319]:
+            - generic [ref=e320]: "05"
+            - strong [ref=e321]: Reporting & Visibility
+          - generic [ref=e322]:
+            - generic [ref=e323]: "06"
+            - strong [ref=e324]: Back Office & Admin
+          - generic [ref=e325]:
+            - generic [ref=e326]: "07"
+            - strong [ref=e327]: System Monitoring & Improvement
+    - generic [ref=e329]:
+      - generic [ref=e330]:
+        - paragraph [ref=e331]: Most businesses don't realize where this breaks until it starts costing them.
+        - heading "If your workflows are breaking, you're losing revenue." [level=2] [ref=e332]
+        - paragraph [ref=e333]: We build systems that capture leads, route work, and keep follow-up moving so nothing gets missed and revenue does not slip through.
+      - link "Find What's Slowing You Down" [ref=e334] [cursor=pointer]:
+        - /url: assessment/
+  - contentinfo [ref=e338]:
+    - generic [ref=e339]:
+      - generic [ref=e340]:
+        - link "Aegis & Co. home" [ref=e341] [cursor=pointer]:
+          - /url: /
+          - generic [ref=e346]: Aegis & Co.
+        - paragraph [ref=e347]: Systems that keep revenue-critical work moving for service businesses.
+      - generic [ref=e348]:
+        - heading "Navigation" [level=2] [ref=e349]
+        - link "Revenue Leaks" [ref=e350] [cursor=pointer]:
+          - /url: "#leaks"
+        - link "System Build" [ref=e351] [cursor=pointer]:
+          - /url: "#offer"
+        - link "Process" [ref=e352] [cursor=pointer]:
+          - /url: "#process"
+        - link "Assessment" [ref=e353] [cursor=pointer]:
+          - /url: assessment/
+      - generic [ref=e354]:
+        - heading "System Areas" [level=2] [ref=e355]
+        - link "Lead Capture" [ref=e356] [cursor=pointer]:
+          - /url: "#leaks"
+        - link "Follow-up" [ref=e357] [cursor=pointer]:
+          - /url: "#leaks"
+        - link "Handoffs" [ref=e358] [cursor=pointer]:
+          - /url: "#leaks"
+        - link "Visibility" [ref=e359] [cursor=pointer]:
+          - /url: "#systems"
+      - generic [ref=e360]:
+        - generic [ref=e361]: System Status
+        - strong [ref=e362]: Running Without Manual Handoffs
+        - generic [ref=e364]: "SYS: LEAD_CAPTURE_v2.1"
+    - generic [ref=e365]:
+      - generic [ref=e366]: © 2026 Aegis & Co. All rights reserved.
+      - generic [ref=e367]:
+        - link "Privacy Policy" [ref=e368] [cursor=pointer]:
+          - /url: "#top"
+        - generic [ref=e369]: "|"
+        - link "Terms of Service" [ref=e370] [cursor=pointer]:
+          - /url: "#top"
+        - generic [ref=e371]: "|"
+        - link "LinkedIn" [ref=e372] [cursor=pointer]:
+          - /url: https://www.linkedin.com/in/devin-green-932243373
