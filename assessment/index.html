@@ -3,6 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; base-uri 'none'; object-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://formspree.io; form-action https://formspree.io; frame-src 'none'; worker-src 'none'; manifest-src 'self'"
+    >
     <title>Aegis & Co. | System Assessment</title>
     <meta
       name="description"
@@ -144,7 +148,7 @@
                   <div class="assessment-field">
                     <p class="assessment-question-label">What’s the best name to reach you?</p>
                     <label for="assessment-name">Name <span>*</span></label>
-                    <input id="assessment-name" type="text" name="name" placeholder="Your full name" autocomplete="name" required>
+                    <input id="assessment-name" type="text" name="name" placeholder="Your full name" autocomplete="name" maxlength="100" required>
                   </div>
                   <p class="assessment-step-error" id="assessment-error-1" aria-live="polite"></p>
                 </section>
@@ -153,7 +157,7 @@
                   <p class="assessment-step-kicker">Let’s get this out of the way first —</p>
                   <div class="assessment-field">
                     <label class="assessment-question-label" for="assessment-email">Email <span>*</span></label>
-                    <input id="assessment-email" type="email" name="email" placeholder="you@company.com" autocomplete="email" required>
+                    <input id="assessment-email" type="email" name="email" placeholder="you@company.com" autocomplete="email" maxlength="254" required>
                   </div>
                   <p class="assessment-step-error" id="assessment-error-2" aria-live="polite"></p>
                 </section>
@@ -162,7 +166,7 @@
                   <p class="assessment-step-kicker">Let’s get this out of the way first —</p>
                   <div class="assessment-field">
                     <label class="assessment-question-label" for="assessment-business">Business Name <span>*</span></label>
-                    <input id="assessment-business" type="text" name="business_name" placeholder="Your business name" autocomplete="organization" required>
+                    <input id="assessment-business" type="text" name="business_name" placeholder="Your business name" autocomplete="organization" maxlength="160" required>
                   </div>
                   <p class="assessment-step-error" id="assessment-error-3" aria-live="polite"></p>
                 </section>
@@ -172,7 +176,7 @@
                   <div class="assessment-field">
                     <label class="assessment-question-label" for="assessment-description">What does your business do? <span>*</span></label>
                     <p class="assessment-helper" id="assessment-description-help">Keep it simple – what do you sell and who do you sell to?</p>
-                    <textarea id="assessment-description" name="business_description" placeholder="Type your answer here..." aria-describedby="assessment-description-help" required></textarea>
+                    <textarea id="assessment-description" name="business_description" placeholder="Type your answer here..." aria-describedby="assessment-description-help" maxlength="1500" required></textarea>
                   </div>
                   <p class="assessment-step-error" id="assessment-error-4" aria-live="polite"></p>
                 </section>
@@ -207,7 +211,7 @@
                   <div class="assessment-field">
                     <label class="assessment-question-label" for="assessment-friction">Where does your business feel harder than it should right now? <span>*</span></label>
                     <p class="assessment-helper" id="assessment-friction-help">Be honest – this is where most problems actually live.</p>
-                    <textarea id="assessment-friction" name="friction_area" placeholder="Type your answer here..." aria-describedby="assessment-friction-help" required></textarea>
+                    <textarea id="assessment-friction" name="friction_area" placeholder="Type your answer here..." aria-describedby="assessment-friction-help" maxlength="1500" required></textarea>
                   </div>
                   <p class="assessment-step-error" id="assessment-error-6" aria-live="polite"></p>
                 </section>
@@ -245,7 +249,7 @@
                   <div class="assessment-field">
                     <label class="assessment-question-label" for="assessment-consequence">If nothing changes, what happens over the next 6–12 months? <span>*</span></label>
                     <p class="assessment-helper" id="assessment-consequence-help">Think about the direction you’re currently heading.</p>
-                    <textarea id="assessment-consequence" name="next_6_12_months" placeholder="Type your answer here..." aria-describedby="assessment-consequence-help" required></textarea>
+                    <textarea id="assessment-consequence" name="next_6_12_months" placeholder="Type your answer here..." aria-describedby="assessment-consequence-help" maxlength="1500" required></textarea>
                   </div>
                   <p class="assessment-step-error" id="assessment-error-8" aria-live="polite"></p>
                 </section>
@@ -255,7 +259,7 @@
                   <div class="assessment-field">
                     <label class="assessment-question-label" for="assessment-correct">What would “operating correctly” actually look like for you? <span>*</span></label>
                     <p class="assessment-helper" id="assessment-correct-help">Less chaos, clearer systems, better visibility – define it in your own words.</p>
-                    <textarea id="assessment-correct" name="operating_correctly" placeholder="Type your answer here..." aria-describedby="assessment-correct-help" required></textarea>
+                    <textarea id="assessment-correct" name="operating_correctly" placeholder="Type your answer here..." aria-describedby="assessment-correct-help" maxlength="1500" required></textarea>
                   </div>
                   <p class="assessment-step-error" id="assessment-error-9" aria-live="polite"></p>
                 </section>
@@ -265,7 +269,7 @@
                   <div class="assessment-field">
                     <label class="assessment-question-label" for="assessment-now">Why is now the right time to fix this? <span>*</span></label>
                     <p class="assessment-helper" id="assessment-now-help">What changed that made you take this seriously?</p>
-                    <textarea id="assessment-now" name="why_now" placeholder="Type your answer here..." aria-describedby="assessment-now-help" required></textarea>
+                    <textarea id="assessment-now" name="why_now" placeholder="Type your answer here..." aria-describedby="assessment-now-help" maxlength="1500" required></textarea>
                   </div>
                   <p class="assessment-step-error" id="assessment-error-10" aria-live="polite"></p>
                 </section>
@@ -322,7 +326,7 @@
                   <button class="assessment-submit" type="submit" data-default-text="Let’s Do This →" data-loading-text="Submitting..." hidden>
                     Let’s Do This →
                   </button>
-                  <small data-submit-microcopy hidden>We only reach out if there’s a strong fit.</small>
+                  <small data-submit-microcopy hidden>We only reach out if there’s a strong fit. Don't include passwords or other highly sensitive information.</small>
                 </div>
               </div>
             </div>
@@ -367,212 +371,6 @@
       <a href="https://www.linkedin.com/in/devin-green-932243373" target="_blank" rel="noopener noreferrer">LinkedIn</a>
     </footer>
 
-    <script>
-      (() => {
-        if (window.location.protocol.startsWith("http") && window.location.pathname.endsWith("/index.html")) {
-          const cleanPath = window.location.pathname.replace(/index\.html$/, "");
-          window.history.replaceState(null, "", `${cleanPath}${window.location.search}${window.location.hash}`);
-        }
-
-        const header = document.querySelector(".assessment-header");
-        const menuToggle = document.querySelector(".assessment-menu-toggle");
-        const nav = document.querySelector("#assessment-nav");
-        const form = document.querySelector("#assessment-form");
-        const message = document.querySelector("#assessment-form-message");
-        const steps = [...form?.querySelectorAll(".assessment-step") ?? []];
-        const backButton = form?.querySelector("[data-wizard-back]");
-        const nextButton = form?.querySelector("[data-wizard-next]");
-        const submitButton = form?.querySelector(".assessment-submit");
-        const submitMicrocopy = form?.querySelector("[data-submit-microcopy]");
-        const progressCurrent = form?.querySelector("[data-progress-current]");
-        const progressBar = form?.querySelector("[data-progress-bar]");
-
-        if (header && menuToggle && nav) {
-          menuToggle.addEventListener("click", () => {
-            const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
-            menuToggle.setAttribute("aria-expanded", String(!isOpen));
-            header.classList.toggle("is-menu-open", !isOpen);
-          });
-
-          nav.addEventListener("click", (event) => {
-            if (!event.target.closest("a")) return;
-            menuToggle.setAttribute("aria-expanded", "false");
-            header.classList.remove("is-menu-open");
-          });
-        }
-
-        if (!form || !message || !steps.length || !backButton || !nextButton || !submitButton || !progressCurrent || !progressBar) return;
-
-        let currentStep = 0;
-
-        const formatStep = (index) => String(index + 1).padStart(2, "0");
-
-        const setMessage = (text, type) => {
-          message.textContent = text;
-          message.dataset.state = type;
-        };
-
-        const setStepError = (step, text) => {
-          const error = step.querySelector(".assessment-step-error");
-          step.dataset.invalid = text ? "true" : "false";
-          if (error) error.textContent = text;
-        };
-
-        const getStepControls = (step) =>
-          [...step.querySelectorAll("input, textarea")].filter((control) => control.name && control.name !== "_gotcha");
-
-        const validateStep = (step, shouldFocus = true) => {
-          const controls = getStepControls(step);
-          const firstRadio = controls.find((control) => control.type === "radio");
-
-          if (firstRadio) {
-            const checked = controls.some((control) => control.checked);
-            if (!checked) {
-              setStepError(step, "Please choose one option before continuing.");
-              if (shouldFocus) firstRadio.focus();
-              return false;
-            }
-
-            setStepError(step, "");
-            return true;
-          }
-
-          const field = controls[0];
-          const value = field?.value.trim();
-
-          if (!value) {
-            setStepError(step, "Please answer this question before continuing.");
-            if (shouldFocus) field?.focus();
-            return false;
-          }
-
-          if (field.type === "email" && !field.validity.valid) {
-            setStepError(step, "Please enter a valid email before continuing.");
-            if (shouldFocus) field.focus();
-            return false;
-          }
-
-          setStepError(step, "");
-          return true;
-        };
-
-        const parseFormspreeError = async (response) => {
-          const data = await response.json().catch(() => null);
-          const details = data?.errors
-            ?.map((item) => item.message || item.field)
-            .filter(Boolean)
-            .join(" ");
-
-          return details || `Formspree returned ${response.status}.`;
-        };
-
-        const submitNatively = () => {
-          HTMLFormElement.prototype.submit.call(form);
-        };
-
-        const focusActiveStep = () => {
-          const activeStep = steps[currentStep];
-          const target = activeStep.querySelector("input, textarea");
-          target?.focus({ preventScroll: true });
-        };
-
-        const updateStep = (index, shouldFocus = true) => {
-          currentStep = Math.max(0, Math.min(index, steps.length - 1));
-
-          steps.forEach((step, stepIndex) => {
-            const isActive = stepIndex === currentStep;
-            step.hidden = !isActive;
-            step.classList.toggle("is-active", isActive);
-          });
-
-          const isFinal = currentStep === steps.length - 1;
-          const progress = ((currentStep + 1) / steps.length) * 100;
-
-          progressCurrent.textContent = formatStep(currentStep);
-          progressBar.style.width = `${progress}%`;
-          backButton.hidden = currentStep === 0;
-          nextButton.hidden = isFinal;
-          submitButton.hidden = !isFinal;
-          if (submitMicrocopy) submitMicrocopy.hidden = !isFinal;
-
-          form.dataset.currentStep = String(currentStep + 1);
-          setMessage("", "");
-
-          if (shouldFocus) focusActiveStep();
-        };
-
-        form.addEventListener("input", (event) => {
-          const step = event.target.closest(".assessment-step");
-          if (step) setStepError(step, "");
-        });
-
-        form.addEventListener("change", (event) => {
-          const step = event.target.closest(".assessment-step");
-          if (step) setStepError(step, "");
-        });
-
-        backButton.addEventListener("click", () => {
-          updateStep(currentStep - 1);
-        });
-
-        nextButton.addEventListener("click", () => {
-          const activeStep = steps[currentStep];
-          if (!validateStep(activeStep)) return;
-          updateStep(currentStep + 1);
-        });
-
-        form.addEventListener("submit", async (event) => {
-          event.preventDefault();
-
-          for (let index = 0; index < steps.length; index += 1) {
-            if (!validateStep(steps[index], false)) {
-              updateStep(index);
-              validateStep(steps[index]);
-              return;
-            }
-          }
-
-          submitButton.disabled = true;
-          submitButton.textContent = submitButton.dataset.loadingText;
-          setMessage("", "");
-
-          if (!window.fetch || !window.location.protocol.startsWith("http")) {
-            submitNatively();
-            return;
-          }
-
-          try {
-            const response = await fetch(form.action, {
-              method: "POST",
-              body: new FormData(form),
-              headers: { Accept: "application/json" },
-            });
-
-            if (!response.ok) {
-              const details = await parseFormspreeError(response);
-              setMessage(`Formspree could not accept this submission: ${details}`, "error");
-              return;
-            }
-
-            form.reset();
-            steps.forEach((step) => setStepError(step, ""));
-            updateStep(0, false);
-            setMessage(
-              "assessment received. thank you. we’ll review your submission carefully and follow up if there’s a strong fit.",
-              "success"
-            );
-          } catch (error) {
-            console.error("Assessment submission error:", error);
-            setMessage("Connection issue while submitting. Opening the secure Formspree submit page now.", "error");
-            submitNatively();
-          } finally {
-            submitButton.disabled = false;
-            submitButton.textContent = submitButton.dataset.defaultText;
-          }
-        });
-
-        updateStep(0, false);
-      })();
-    </script>
+    <script src="assessment.js" defer></script>
   </body>
 </html>
