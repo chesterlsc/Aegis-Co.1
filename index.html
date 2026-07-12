@@ -150,23 +150,32 @@
       </section>
 
       <section class="section-shell fit-section">
-        <div class="fit-console" data-reveal>
+        <div class="fit-console" data-reveal id="fitConsole">
+          <span class="pc tl"></span><span class="pc tr"></span><span class="pc bl"></span><span class="pc br"></span>
           <div class="fit-console-copy">
             <p class="eyebrow">This is for you if...</p>
             <h2>Your team is busy, but work still stalls.</h2>
             <p class="fit-console-sub">Most businesses don't notice where this breaks until it starts costing them.</p>
-            <div class="fit-console-cta">
+            <div class="fit-scan-status" aria-hidden="true"><i></i><span id="fitScanLabel">STANDBY</span></div>
+            <div class="fit-console-cta" id="fitCta">
               <h3>Find the workflow leak before it becomes normal.</h3>
               <p>It takes 12 questions to identify where your workflow is leaking time and revenue.</p>
               <a class="button button-primary" href="assessment/">Find What's Slowing You Down</a>
             </div>
           </div>
-          <div class="fit-signals">
-            <div class="fit-signal" data-reveal><span class="fit-signal-idx">01</span><span class="fit-signal-text">Leads are coming in, but follow-up is not consistent</span><span class="fit-check" aria-hidden="true">&check;</span></div>
-            <div class="fit-signal" data-reveal><span class="fit-signal-idx">02</span><span class="fit-signal-text">Your team is busy, but work still stalls</span><span class="fit-check" aria-hidden="true">&check;</span></div>
-            <div class="fit-signal" data-reveal><span class="fit-signal-idx">03</span><span class="fit-signal-text">Every new client creates more admin</span><span class="fit-check" aria-hidden="true">&check;</span></div>
-            <div class="fit-signal" data-reveal><span class="fit-signal-idx">04</span><span class="fit-signal-text">Work moves through people instead of systems</span><span class="fit-check" aria-hidden="true">&check;</span></div>
-            <div class="fit-signal" data-reveal><span class="fit-signal-idx">05</span><span class="fit-signal-text">You're still checking things that should run automatically</span><span class="fit-check" aria-hidden="true">&check;</span></div>
+          <div class="fit-signals-wrap">
+            <div class="fit-signals-head" aria-hidden="true">
+              <span>Symptom Scan</span>
+              <b id="fitScanCount">0/5 MATCHED</b>
+            </div>
+            <div class="fit-signals" id="fitSignals">
+              <div class="fit-signal" data-impact="3"><span class="fit-signal-idx">01</span><span class="fit-signal-text">Leads are coming in, but follow-up is not consistent</span><span class="fit-impact" aria-hidden="true"><i></i><i></i><i></i></span><span class="fit-state" aria-hidden="true">!</span></div>
+              <div class="fit-signal" data-impact="2"><span class="fit-signal-idx">02</span><span class="fit-signal-text">Your team is busy, but work still stalls</span><span class="fit-impact" aria-hidden="true"><i></i><i></i><i></i></span><span class="fit-state" aria-hidden="true">!</span></div>
+              <div class="fit-signal" data-impact="2"><span class="fit-signal-idx">03</span><span class="fit-signal-text">Every new client creates more admin</span><span class="fit-impact" aria-hidden="true"><i></i><i></i><i></i></span><span class="fit-state" aria-hidden="true">!</span></div>
+              <div class="fit-signal" data-impact="3"><span class="fit-signal-idx">04</span><span class="fit-signal-text">Work moves through people instead of systems</span><span class="fit-impact" aria-hidden="true"><i></i><i></i><i></i></span><span class="fit-state" aria-hidden="true">!</span></div>
+              <div class="fit-signal" data-impact="2"><span class="fit-signal-idx">05</span><span class="fit-signal-text">You're still checking things that should run automatically</span><span class="fit-impact" aria-hidden="true"><i></i><i></i><i></i></span><span class="fit-state" aria-hidden="true">!</span></div>
+            </div>
+            <span class="fit-scanline" id="fitScanline" aria-hidden="true"></span>
           </div>
         </div>
       </section>
