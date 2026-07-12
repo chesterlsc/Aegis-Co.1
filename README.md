@@ -6,6 +6,8 @@ Revenue-focused landing page for Aegis & Co., a systems company that helps servi
 
 This revision moves the homepage from a general systems/automation message into a clearer conversion path for service businesses with demand but messy operations.
 
+The full version history since creation lives in [CHANGELOG.md](CHANGELOG.md).
+
 Source comparison:
 - Previous/current source version: [`chesterlsc/aegis-co-1.0`](https://github.com/chesterlsc/aegis-co-1.0)
 - New implemented version: [`chesterlsc/Aegis-Co.1`](https://github.com/chesterlsc/Aegis-Co.1)
