@@ -414,6 +414,67 @@
     });
   });
 
+  /* ---------------- fit-console symptom scan ---------------- */
+
+  var fitConsole = document.getElementById("fitConsole");
+  var fitSignalRows = Array.prototype.slice.call(document.querySelectorAll("#fitSignals .fit-signal"));
+  var fitScanLabel = document.getElementById("fitScanLabel");
+  var fitScanCount = document.getElementById("fitScanCount");
+  var fitScanline = document.getElementById("fitScanline");
+  var fitCta = document.getElementById("fitCta");
+
+  if (fitConsole && fitSignalRows.length && fitScanLabel && fitScanCount) {
+    var finishScan = function () {
+      fitConsole.classList.add("scan-complete");
+      fitScanLabel.textContent = "SCAN COMPLETE — 5/5";
+      fitScanCount.textContent = "5/5 MATCHED";
+      if (fitCta) fitCta.classList.add("is-armed");
+      if (fitScanline) fitScanline.classList.remove("is-on");
+    };
+
+    if (reduceMotion || !("IntersectionObserver" in window)) {
+      fitSignalRows.forEach(function (row) {
+        row.classList.add("is-detected");
+      });
+      finishScan();
+    } else {
+      var runScan = function () {
+        fitConsole.classList.add("is-scanning");
+        fitScanLabel.textContent = "SCANNING OPERATIONS…";
+        if (fitScanline) fitScanline.classList.add("is-on");
+        var i = 0;
+        var step = function () {
+          if (i < fitSignalRows.length) {
+            var row = fitSignalRows[i];
+            row.classList.add("is-detected");
+            fitScanCount.textContent = (i + 1) + "/5 MATCHED";
+            if (fitScanline) {
+              fitScanline.style.top = row.offsetTop + row.offsetHeight + 4 + "px";
+            }
+            i++;
+            window.setTimeout(step, 620);
+          } else {
+            window.setTimeout(finishScan, 350);
+          }
+        };
+        window.setTimeout(step, 500);
+      };
+
+      var scanObserver = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              scanObserver.unobserve(entry.target);
+              runScan();
+            }
+          });
+        },
+        { threshold: 0.45 }
+      );
+      scanObserver.observe(fitConsole);
+    }
+  }
+
   /* ---------------- hero pipeline live-run simulation ---------------- */
 
   var flowRail = document.querySelector(".diagnostic-flow .flow-steps");
