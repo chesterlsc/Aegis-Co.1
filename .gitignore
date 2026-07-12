@@ -1,7 +1,5 @@
 .DS_Store
 .vscode/
-.claude/
-.codex/
 .playwright-cli/
 node_modules/
 test-results/
